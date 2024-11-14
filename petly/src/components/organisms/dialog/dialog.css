@@ -1,0 +1,78 @@
+#dialog {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 6vw;
+}
+
+.dialog-outer {
+  width: 380px;
+  height: 180px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-inner {
+  position: relative;
+  width: 360px;
+  height: 160px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+}
+
+.dialog-inner p {
+  position: relative;
+  width: fit-content;
+  color: #000;
+  font-family: "VT323", sans-serif;
+  line-height: 1;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  word-break: break-word;
+  white-space: normal;
+  user-select: none;
+  padding-right: 3px;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 4px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    animation: blink 0.8s infinite;
+  }
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    border-right: 2px solid transparent;
+  }
+
+  50%,
+  100% {
+    border-right: 2px solid #000;
+  }
+}
+
+.dialog-btn {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 12px;
+  height: 11px;
+  object-fit: cover;
+  cursor: pointer;
+}

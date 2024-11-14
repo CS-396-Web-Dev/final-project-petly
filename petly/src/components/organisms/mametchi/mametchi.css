@@ -1,0 +1,67 @@
+:root {
+  --pixel-size: 6;
+}
+
+#mametchi {
+  position: relative;
+  width: 100vw;
+  height: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mametchi-container {
+  width: calc(32px * var(--pixel-size));
+  height: calc(32px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: 4em auto;
+}
+
+.mametchi-spritesheet {
+  display: block;
+  position: absolute;
+  width: calc(320px * var(--pixel-size));
+  max-width: none;
+  animation: regularSpriteSheet 2s steps(10) infinite;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mametchi-shadow {
+  position: absolute;
+  bottom: 4rem;
+  width: calc(32px * var(--pixel-size));
+  height: calc(32px * var(--pixel-size));
+  z-index: -1;
+}
+
+.pixel-art {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.sad {
+  top: calc(-32px * var(--pixel-size));
+  left: calc(4 * -32px * var(--pixel-size));
+  animation: sadSpritesheet 2s steps(6) infinite !important;
+}
+
+@keyframes regularSpriteSheet {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-100%), 0, 0);
+  }
+}
+
+@keyframes sadSpritesheet {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 6 * var(--pixel-size)), 0, 0);
+  }
+}
