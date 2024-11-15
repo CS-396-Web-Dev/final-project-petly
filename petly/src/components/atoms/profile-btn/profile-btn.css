@@ -1,0 +1,26 @@
+#profile-btn {
+  display: inline-block;
+  width: 126px;
+  height: 52px;
+  background-color: #000;
+  border-radius: 12px;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#profile-btn p {
+  width: 126px;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  line-height: 1.2;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  word-break: break-word;
+  white-space: normal;
+  user-select: none;
+}
+
+#profile-btn:active {
+  transform: scale(0.95);
+}

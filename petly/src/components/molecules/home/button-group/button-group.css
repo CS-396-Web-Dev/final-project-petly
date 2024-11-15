@@ -1,0 +1,9 @@
+#button-group {
+  position: absolute;
+  bottom: 2rem;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}

@@ -2,7 +2,7 @@
   --pixel-size: 6;
 }
 
-#mametchi {
+#hatch {
   position: relative;
   width: 100vw;
   height: 340px;
@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.mametchi-wrapper {
+.hatch-wrapper {
   width: calc(32px * var(--pixel-size));
   height: calc(32px * var(--pixel-size));
   overflow: hidden;
@@ -19,22 +19,34 @@
   margin: 4em auto;
 }
 
-.mametchi-spritesheet {
+.type-2 {
+  padding-left: 2.1rem;
+}
+
+.spritesheet {
   display: block;
   position: absolute;
-  width: calc(320px * var(--pixel-size));
+  width: calc(1024px * var(--pixel-size));
   max-width: none;
-  animation: regularSpriteSheet 2s steps(10) infinite;
+
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.pixel-shadow {
-  position: absolute;
-  bottom: 4rem;
-  width: calc(32px * var(--pixel-size));
-  height: calc(32px * var(--pixel-size));
-  z-index: -1;
+.egg-1 {
+  top: calc(-32px * 25 * var(--pixel-size));
+}
+
+.egg-2 {
+  top: calc(-32px * 26 * var(--pixel-size));
+}
+
+.unhatched {
+  animation: unhatched 2s steps(3) infinite !important;
+}
+
+.hatched {
+  animation: hatched 2s steps(6) infinite !important;
 }
 
 .pixel-art {
@@ -42,22 +54,16 @@
   image-rendering: crisp-edges;
 }
 
-.sad {
-  top: calc(-32px * var(--pixel-size));
-  left: calc(4 * -32px * var(--pixel-size));
-  animation: sadSpritesheet 2s steps(6) infinite !important;
-}
-
-@keyframes regularSpriteSheet {
+@keyframes unhatched {
   from {
     transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translate3d(calc(-100%), 0, 0);
+    transform: translate3d(calc(-32px * 3 * var(--pixel-size)), 0, 0);
   }
 }
 
-@keyframes sadSpritesheet {
+@keyframes hatched {
   from {
     transform: translate3d(0, 0, 0);
   }

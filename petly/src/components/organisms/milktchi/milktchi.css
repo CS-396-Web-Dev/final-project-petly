@@ -2,7 +2,7 @@
   --pixel-size: 6;
 }
 
-#mametchi {
+#milktchi {
   position: relative;
   width: 100vw;
   height: 340px;
@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.mametchi-wrapper {
+.milktchi-wrapper {
   width: calc(32px * var(--pixel-size));
   height: calc(32px * var(--pixel-size));
   overflow: hidden;
@@ -19,12 +19,12 @@
   margin: 4em auto;
 }
 
-.mametchi-spritesheet {
+.milktchi-spritesheet {
   display: block;
   position: absolute;
-  width: calc(320px * var(--pixel-size));
+  width: calc(352px * var(--pixel-size));
   max-width: none;
-  animation: regularSpriteSheet 2s steps(10) infinite;
+  animation: regularSpriteSheet 2s steps(11) infinite;
   background-repeat: no-repeat;
   background-size: cover;
 }

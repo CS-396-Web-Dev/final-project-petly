@@ -1,8 +1,8 @@
 import Image from "next/image";
-import more_btn from "../../../../public/more_btn.png";
-import "./home-header.css";
+import more_btn from "../../../../../public/more_btn.png";
+import "./header.css";
 
-const HomeHeader = () => {
+const Header = () => {
   return (
     <header>
       <p>Home</p>
@@ -11,4 +11,4 @@ const HomeHeader = () => {
   );
 };
 
-export default HomeHeader;
+export default Header;

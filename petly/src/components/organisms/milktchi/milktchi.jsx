@@ -1,15 +1,15 @@
 import Image from "next/image";
 import shadow from "../../../../public/shadow.png";
-import mametchi from "../../../../public/mametchi_sprite_sheet.png";
-import "./mametchi.css";
+import milktchi from "../../../../public/milktchi_sprite_sheet.png";
+import "./milktchi.css";
 
-const Mametchi = () => {
+const Milktchi = () => {
   return (
-    <section id="mametchi">
-      <div className="mametchi-wrapper">
+    <section id="milktchi">
+      <div className="milktchi-wrapper">
         <Image
-          className="mametchi-spritesheet pixel-art"
-          src={mametchi}
+          className="milktchi-spritesheet pixel-art"
+          src={milktchi}
           alt=""
           width={320}
           height={320}
@@ -30,4 +30,4 @@ const Mametchi = () => {
   );
 };
 
-export default Mametchi;
+export default Milktchi;
