@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Petly Home",
-  description: "Petly Home",
+  title: "Home",
+  description: "Home",
 };
 
 export default function HomeLayout({ children }) {

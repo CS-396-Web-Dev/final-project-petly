@@ -1,6 +1,6 @@
 import Image from "next/image";
-import shadow from "../../../../public/shadow.png";
-import mametchi from "../../../../public/mametchi_sprite_sheet.png";
+import shadow from "../../../../../public/shadow.png";
+import mametchi from "../../../../../public/mametchi_sprite_sheet.png";
 import "./mametchi.css";
 
 const Mametchi = () => {

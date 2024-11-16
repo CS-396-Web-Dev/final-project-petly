@@ -1,6 +1,6 @@
 import Image from "next/image";
-import shadow from "../../../../public/shadow.png";
-import milktchi from "../../../../public/milktchi_sprite_sheet.png";
+import shadow from "../../../../../public/shadow.png";
+import milktchi from "../../../../../public/milktchi_sprite_sheet.png";
 import "./milktchi.css";
 
 const Milktchi = () => {
