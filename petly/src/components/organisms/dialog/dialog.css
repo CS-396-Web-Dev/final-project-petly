@@ -10,7 +10,7 @@
 
 .dialog-outer {
   width: 380px;
-  height: 160px;
+  height: 380px;
   border: 2px solid #000;
   border-radius: 8px;
   display: flex;
@@ -21,7 +21,7 @@
 .dialog-inner {
   position: relative;
   width: 360px;
-  height: 140px;
+  height: 360px;
   border: 2px solid #000;
   border-radius: 5px;
   display: flex;

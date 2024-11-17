@@ -1,0 +1,13 @@
+#mask {
+  background-color: rgba(0, 0, 0, 0.2);
+  left: 0;
+  top: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  transition: opacity 0.5s linear;
+  opacity: 1;
+  pointer-events: all;
+  backdrop-filter: blur(1px);
+  z-index: -1;
+}
