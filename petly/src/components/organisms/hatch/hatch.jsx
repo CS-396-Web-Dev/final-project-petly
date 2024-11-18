@@ -1,5 +1,5 @@
 import Image from "next/image";
-import sprite_all from "../../../../../public/sprite_sheet_all.png";
+import sprite_sheet_all from "../../../../public/sprite_sheet_all.png";
 import "./hatch.css";
 
 const Hatch = () => {
@@ -8,7 +8,7 @@ const Hatch = () => {
       <div className="hatch-wrapper type-2">
         <Image
           className="spritesheet pixel-art egg-2 unhatched"
-          src={sprite_all}
+          src={sprite_sheet_all}
           alt=""
           width={1024}
           height={1024}

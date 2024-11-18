@@ -8,7 +8,7 @@ const Dialog = () => {
       <div className="dialog-outer">
         <div className="dialog-inner">
           <p>I’m happy, please play with me...</p>
-          <Image src={dialog_btn} alt="" className="dialog-btn" />
+          <Image src={dialog_btn} alt="" className="dialog-btn" priority />
         </div>
       </div>
     </section>

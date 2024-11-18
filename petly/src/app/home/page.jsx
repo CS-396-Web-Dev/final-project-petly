@@ -1,12 +1,12 @@
-import Header from "@/components/molecules/home/header/header";
+import HomeHeader from "@/components/molecules/home-header/home-header";
 import Tamagotchi from "@/components/organisms/tamagotchi/tamagotchi";
-import ButtonGroup from "@/components/molecules/home/button-group/button-group";
+import ButtonGroup from "@/components/molecules/button-group/button-group";
 import "./home.css";
 
 export default function Home() {
   return (
     <main id="home">
-      <Header />
+      <HomeHeader />
       <Tamagotchi />
       <ButtonGroup />
     </main>

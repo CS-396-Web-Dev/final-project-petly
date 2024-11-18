@@ -1,6 +1,6 @@
 import Image from "next/image";
-import shadow from "../../../../../public/shadow.png";
-import milktchi from "../../../../../public/milktchi_sprite_sheet.png";
+import shadow_img from "../../../../public/shadow.png";
+import milktchi_sprite_sheet from "../../../../public/milktchi_sprite_sheet.png";
 import "./milktchi.css";
 
 const Milktchi = () => {
@@ -9,7 +9,7 @@ const Milktchi = () => {
       <div className="milktchi-wrapper">
         <Image
           className="milktchi-spritesheet pixel-art"
-          src={milktchi}
+          src={milktchi_sprite_sheet}
           alt=""
           width={320}
           height={320}
@@ -19,7 +19,7 @@ const Milktchi = () => {
       </div>
       <Image
         className="pixel-shadow pixel-art"
-        src={shadow}
+        src={shadow_img}
         alt=""
         width={32}
         height={32}

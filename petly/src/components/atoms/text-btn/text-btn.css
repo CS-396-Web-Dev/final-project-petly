@@ -1,0 +1,21 @@
+.text-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: fit-content;
+  display: inline-block;
+}
+
+.text-btn p {
+  color: #070707;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  word-break: break-word;
+  white-space: normal;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}

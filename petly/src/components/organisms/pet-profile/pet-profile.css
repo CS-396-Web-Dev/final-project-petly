@@ -1,4 +1,4 @@
-#pet-profile-container {
+#pet-profile-wrapper {
   left: 0;
   top: 0;
   position: fixed;
@@ -12,10 +12,98 @@
 
 #pet-profile {
   position: relative;
-  width: 350px;
-  height: 690px;
+  width: 385px;
+  height: 740px;
   background: #f5f5f7;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.heading-level {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.heading-level p {
+  width: fit-content;
+  color: #9098a3;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  word-break: break-word;
+  white-space: normal;
+  user-select: none;
+  padding-left: 1.5rem;
+}
+
+.pet-level-container {
+  width: 340px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: #ffffff;
+  border-radius: 12px;
+  margin-top: 1rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.heading-status {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.heading-status p {
+  width: fit-content;
+  color: #9098a3;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  word-break: break-word;
+  white-space: normal;
+  user-select: none;
+  padding-left: 1.5rem;
+}
+
+.pet-status-container {
+  width: 340px;
+  height: 260px;
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 1rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-id {
+  width: fit-content;
+  color: #9098a3;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  word-break: break-word;
+  white-space: normal;
+  margin-top: 2rem;
 }

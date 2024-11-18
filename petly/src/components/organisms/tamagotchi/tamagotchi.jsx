@@ -1,6 +1,6 @@
 "use client";
-import Mametchi from "@/components/molecules/pet/mametchi/mametchi";
-import Hatch from "@/components/molecules/pet/hatch/hatch";
+import Mametchi from "@/components/organisms/mametchi/mametchi";
+import Hatch from "@/components/organisms/hatch/hatch";
 import Dialog from "@/components/organisms/dialog/dialog";
 import PetProfile from "../pet-profile/pet-profile";
 import "./tamagotchi.css";

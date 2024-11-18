@@ -1,0 +1,33 @@
+.pet-image {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  max-width: none;
+  margin-top: 3rem;
+  user-select: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.pet-shadow {
+  height: auto;
+  object-fit: cover;
+  margin-top: 1px;
+  user-select: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.pet-name {
+  width: fit-content;
+  color: #070707;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  word-break: break-word;
+  white-space: normal;
+  user-select: none;
+  margin-top: 0.75rem;
+}
