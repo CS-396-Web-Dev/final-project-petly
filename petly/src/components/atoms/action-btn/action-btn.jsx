@@ -1,8 +1,8 @@
 import "./action-btn.css";
 
-const ActionBtn = () => {
+const ActionBtn = ({ onBtnClicked }) => {
   return (
-    <button id="action-btn">
+    <button id="action-btn" onClick={onBtnClicked}>
       <p>Action</p>
     </button>
   );

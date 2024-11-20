@@ -1,8 +1,8 @@
 import "./profile-btn.css";
 
-const ProfileBtn = () => {
+const ProfileBtn = ({ onBtnClicked }) => {
   return (
-    <button id="profile-btn">
+    <button id="profile-btn" onClick={onBtnClicked}>
       <p>Profile</p>
     </button>
   );
