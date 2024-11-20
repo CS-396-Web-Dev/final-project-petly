@@ -18,10 +18,12 @@ const PetProfile = () => {
   return (
     <section id="pet-profile-wrapper">
       <BackModal />
-      <section id="pet-profile">
-        <TextBtn text={"close"} onBtnClicked={() => closeModal("petProfile")} />
+      <div id="pet-profile">
+        <TextBtn text={"Close"} onBtnClicked={() => closeModal("petProfile")} />
 
-        <PetInfo />
+        <section className="pet-info-container">
+          <PetInfo />
+        </section>
 
         <span className="heading-level">
           <p>Level</p>
@@ -42,7 +44,7 @@ const PetProfile = () => {
         </section>
 
         <p className="user-id">UID: 88bc0428-2c0a-48b1-953c-2e68ffa588d4</p>
-      </section>
+      </div>
     </section>
   );
 };
