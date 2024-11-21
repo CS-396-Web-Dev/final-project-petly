@@ -21,23 +21,23 @@ const PetProfile = () => {
       <div id="pet-profile">
         <TextBtn text={"Close"} onBtnClicked={() => closeModal("petProfile")} />
 
-        <section className="pet-info-container">
+        <section className="pet-info-section">
           <PetInfo />
         </section>
 
-        <span className="heading-level">
+        <span className="level-heading">
           <p>Level</p>
         </span>
 
-        <section className="pet-level-container">
+        <section className="pet-level-section">
           <PetLevel />
         </section>
 
-        <span className="heading-status">
+        <span className="status-heading">
           <p>Status</p>
         </span>
 
-        <section className="pet-status-container">
+        <section className="pet-status-section">
           <PetHappiness />
           <PetHungriness />
           <PetTraining />
