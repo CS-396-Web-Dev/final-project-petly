@@ -1,4 +1,4 @@
-#pet-profile-wrapper {
+#pet-action-wrapper {
   left: 0;
   top: 0;
   position: fixed;
@@ -10,7 +10,7 @@
   z-index: 999;
 }
 
-#pet-profile {
+#pet-action {
   position: relative;
   width: 385px;
   height: 740px;
@@ -31,7 +31,39 @@
   margin-top: 3.5rem;
 }
 
-.level-heading {
+.happiness-heading {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.happiness-heading p {
+  width: fit-content;
+  color: #9098a3;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  word-break: break-word;
+  white-space: normal;
+  user-select: none;
+  padding-left: 1.5rem;
+}
+
+.happiness-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.hungriness-heading {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -40,7 +72,7 @@
   margin-top: 2rem;
 }
 
-.level-heading p {
+.hungriness-heading p {
   width: fit-content;
   color: #9098a3;
   font-family: "Inter", sans-serif;
@@ -54,29 +86,25 @@
   padding-left: 1.5rem;
 }
 
-.pet-level-section {
-  width: 340px;
-  height: 120px;
+.hungriness-section {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  background: #ffffff;
-  border-radius: 12px;
-  margin-top: 1rem;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1.5rem;
 }
 
-.status-heading {
+.training-heading {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 }
 
-.status-heading p {
+.training-heading p {
   width: fit-content;
   color: #9098a3;
   font-family: "Inter", sans-serif;
@@ -90,28 +118,11 @@
   padding-left: 1.5rem;
 }
 
-.pet-status-section {
-  width: 340px;
-  height: 260px;
-  background: #ffffff;
-  border-radius: 12px;
+.training-section {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-top: 1rem;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.user-id {
-  width: fit-content;
-  color: #9098a3;
-  font-family: "Inter", sans-serif;
-  line-height: 1;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  word-break: break-word;
-  white-space: normal;
-  margin-top: 2.5rem;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1.5rem;
 }

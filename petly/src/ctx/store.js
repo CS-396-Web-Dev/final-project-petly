@@ -16,14 +16,23 @@ const logger = (config) => (set, get, api) =>
     api
   );
 
-export const useModalStore = create(
-  logger((set) => ({
-    isModalOpen: false,
-    openModal: () => set({ isModalOpen: true }),
-    closeModal: () => set({ isModalOpen: false }),
-    toggleModal: () => set((state) => ({ isModalOpen: !state.isModalOpen })),
-  }))
-);
+export const useModalStore = create((set) => ({
+  modals: {
+    petProfile: false,
+    petAction: false,
+  },
+  openModal: (name) =>
+    set((state) => ({ modals: { ...state.modals, [name]: true } })),
+  closeModal: (name) =>
+    set((state) => ({ modals: { ...state.modals, [name]: false } })),
+  toggleModal: (name) =>
+    set((state) => ({
+      modals: {
+        ...state.modals,
+        [name]: !state.modals[name],
+      },
+    })),
+}));
 
 export const usePetStore = create(
   logger(

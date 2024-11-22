@@ -1,4 +1,4 @@
-#profile-btn {
+#home-profile-btn {
   display: inline-block;
   width: 126px;
   height: 52px;
@@ -9,7 +9,7 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#profile-btn p {
+#home-profile-btn p {
   width: 126px;
   color: #000;
   font-family: "Inter", sans-serif;
@@ -22,6 +22,6 @@
   user-select: none;
 }
 
-#profile-btn:active {
+#home-profile-btn:active {
   transform: scale(0.95);
 }

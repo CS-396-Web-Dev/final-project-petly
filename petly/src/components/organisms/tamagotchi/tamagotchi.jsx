@@ -1,17 +1,20 @@
 "use client";
-import Mametchi from "@/components/organisms/mametchi/mametchi";
 import Hatch from "@/components/organisms/hatch/hatch";
-import Dialog from "@/components/organisms/dialog/dialog";
-import PetProfile from "../pet-profile/pet-profile";
+import Mametchi from "@/components/organisms/mametchi/mametchi";
+import Milktchi from "@/components/organisms/milktchi/milktchi";
+import PetDialog from "@/components/organisms/pet-dialog/pet-dialog";
+import PetProfile from "@/components/organisms/pet-profile/pet-profile";
+import PetAction from "@/components/organisms/pet-action/pet-action";
 import "./tamagotchi.css";
 
 const Tamagotchi = () => {
   return (
-    <section>
+    <>
       <Hatch />
-      <Dialog />
+      <PetDialog />
       <PetProfile />
-    </section>
+      <PetAction />
+    </>
   );
 };
 
