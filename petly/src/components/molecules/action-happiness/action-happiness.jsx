@@ -1,19 +1,41 @@
-import Image from "next/image";
 import gift_img from "../../../../public/action/gift.svg";
-import "./action-happiness.css";
+import music_img from "../../../../public/action/music.svg";
+import game_img from "../../../../public/action/game.svg";
+import ActionBtn from "@/components/atoms/action-btn/action-btn";
 
 const ActionHappiness = () => {
   return (
     <>
-      <button className="action-btn">
-        <Image src={gift_img} alt="" className="action-img" priority />
-        <p className="action-text">Gift</p>
-        <div className="action-bg">
-          <p className="action-value">+12</p>
-        </div>
-      </button>
-      <button className="action-btn"></button>
-      <button className="action-btn"></button>
+      <ActionBtn
+        img_src={gift_img}
+        width={32}
+        height={28}
+        text={"Gift"}
+        value={12}
+        pt={0}
+        bg={"bg-1"}
+        tx={"tx-1"}
+      />
+      <ActionBtn
+        img_src={music_img}
+        width={39}
+        height={37}
+        text={"Music"}
+        value={18}
+        pt={3}
+        bg={"bg-2"}
+        tx={"tx-2"}
+      />
+      <ActionBtn
+        img_src={game_img}
+        width={55}
+        height={33}
+        text={"Game"}
+        value={24}
+        pt={5}
+        bg={"bg-3"}
+        tx={"tx-3"}
+      />
     </>
   );
 };
