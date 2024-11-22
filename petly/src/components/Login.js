@@ -10,69 +10,110 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       await login(email, password);
       router.push('/home');
     } catch (err) {
-      setError('Failed to login');
+      setError('Invalid email or password');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="mobile-wrapper">
       <MobileContainer>
-        <div className="p-6 space-y-6">
-          <header className="relative w-full text-center pt-4">
-            <h2 className="text-xl font-semibold">Sign In</h2>
-          </header>
-
-          {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded text-sm">
-              {error}
-            </div>
-          )}
-
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            <div>
-              <input
-                type="email"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder="Email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+        <div className="relative w-full">
+          <TextBtn text="close" />
+          
+          <div className="w-full flex flex-col items-center pt-16 px-6 animate-[fadeIn_0.6s_ease-out]">
+            <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-violet-500 via-purple-500 to-fuchsia-500 p-[2px] mb-8">
+              <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
+                {/* ADD OUR LOGO HERE */}
+                <span className="text-2xl">🐾</span>
+              </div>
             </div>
 
-            <button
-              type="submit"
-              className="w-full py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
-            >
-              Sign in
-            </button>
-          </form>
+            <h2 className="text-[#070707] font-['Inter'] text-2xl font-bold mb-2">
+              Welcome back
+            </h2>
+            <p className="text-[#9098a3] font-['Inter'] text-sm mb-8">
+              Sign in to continue your pet journey
+            </p>
 
-          <div className="text-center text-sm">
-            <p className="text-gray-600">
-              Don't have an account?{' '}
-              <Link href="/signup" className="text-indigo-600 font-medium">
-                Sign up
-              </Link>
+            {error && (
+              <div className="w-full max-w-[340px] bg-red-50 border border-red-100 text-red-600 px-4 py-3 rounded-xl text-sm mb-6 animate-[slideIn_0.3s_ease-out]">
+                {error}
+              </div>
+            )}
+
+            <form className="w-full max-w-[340px] space-y-6" onSubmit={handleSubmit}>
+              <div className="space-y-4">
+                <div className="relative">
+                  <input
+                    type="email"
+                    required
+                    className="w-full px-5 py-4 rounded-xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-purple-500 transition-all duration-200 outline-none font-['Inter'] text-sm placeholder:text-gray-400"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="relative">
+                  <input
+                    type="password"
+                    required
+                    className="w-full px-5 py-4 rounded-xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-purple-500 transition-all duration-200 outline-none font-['Inter'] text-sm placeholder:text-gray-400"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isLoading}
+                className={`w-full relative py-4 bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white rounded-xl font-['Inter'] text-sm font-semibold 
+                  hover:opacity-95 transition-all duration-200 
+                  before:absolute before:inset-0 before:bg-gradient-to-r before:from-purple-600 before:to-fuchsia-600 before:rounded-xl before:transition-opacity before:opacity-0 before:hover:opacity-100
+                  disabled:opacity-70 disabled:cursor-not-allowed
+                  shadow-lg shadow-purple-500/20
+                  group
+                `}
+              >
+                <span className="relative">
+                  {isLoading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                      Signing in...
+                    </div>
+                  ) : 'Sign in'}
+                </span>
+              </button>
+            </form>
+
+            <div className="mt-8 text-center">
+              <p className="font-['Inter'] text-sm text-[#9098a3]">
+                Don't have an account?{' '}
+                <Link 
+                  href="/signup" 
+                  className="text-purple-600 font-semibold hover:text-purple-700 transition-colors"
+                >
+                  Sign up
+                </Link>
+              </p>
+            </div>
+
+            <p className="mt-8 font-['Inter'] text-xs text-[#9098a3] opacity-60">
+              UID: 88bc0428-2c0a-48b1-953c-2e68ffa588d4
             </p>
           </div>
         </div>
