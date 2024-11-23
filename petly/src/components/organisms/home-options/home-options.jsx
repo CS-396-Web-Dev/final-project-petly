@@ -34,6 +34,16 @@ const HomeOptions = () => {
     openModal("petAction");
   };
 
+  const onPetRankingBtnClicked = () => {
+    closeModal("homeOptions");
+    // router.push("/");
+  };
+
+  const onQuitBtnClicked = () => {
+    closeModal("homeOptions");
+    router.push("/");
+  };
+
   return (
     <section id="home-options-wrapper">
       <BackModal />
@@ -57,10 +67,13 @@ const HomeOptions = () => {
           />
         </div>
         <div className="home-option" data-aos="fade-up" data-aos-delay="150">
-          <OptionBtn text={"Pet Ranking"} />
+          <OptionBtn
+            text={"Pet Ranking"}
+            onBtnClicked={() => onPetRankingBtnClicked()}
+          />
         </div>
         <div className="home-option" data-aos="fade-up" data-aos-delay="200">
-          <OptionBtn text={"Quit"} onBtnClicked={() => router.push("/")} />
+          <OptionBtn text={"Quit"} onBtnClicked={() => onQuitBtnClicked()} />
         </div>
       </div>
     </section>
