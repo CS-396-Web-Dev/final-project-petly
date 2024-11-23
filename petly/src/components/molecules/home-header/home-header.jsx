@@ -1,12 +1,24 @@
+"use client";
 import Image from "next/image";
-import more_btn from "../../../../public/more_btn.png";
+import three_dots_img from "../../../../public/three_dots.png";
+import { useModalStore } from "@/ctx/store";
 import "./home-header.css";
 
 const HomeHeader = () => {
+  const openModal = useModalStore((state) => state.openModal);
+
   return (
     <header>
       <p>Home</p>
-      <Image src={more_btn} alt="" className="more-btn" priority />
+      <Image
+        src={three_dots_img}
+        alt=""
+        className="three-dots-img"
+        width={26}
+        height={26}
+        priority
+        onClick={() => openModal("homeOptions")}
+      />
     </header>
   );
 };

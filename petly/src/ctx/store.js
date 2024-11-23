@@ -20,6 +20,7 @@ export const useModalStore = create((set) => ({
   modals: {
     petProfile: false,
     petAction: false,
+    homeOptions: false,
   },
   openModal: (name) =>
     set((state) => ({ modals: { ...state.modals, [name]: true } })),

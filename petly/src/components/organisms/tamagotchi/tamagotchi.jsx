@@ -10,7 +10,7 @@ import "./tamagotchi.css";
 const Tamagotchi = () => {
   return (
     <>
-      <Milktchi />
+      <Hatch />
       <PetDialog />
       <PetProfile />
       <PetAction />
