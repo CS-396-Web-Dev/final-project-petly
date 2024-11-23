@@ -5,6 +5,7 @@ import HomeOptions from "@/components/organisms/home-options/home-options";
 import Dialog from "@/components/organisms/dialog/dialog";
 import PetProfile from "@/components/organisms/pet-profile/pet-profile";
 import PetAction from "@/components/organisms/pet-action/pet-action";
+import PetRanking from "@/components/organisms/pet-ranking/pet-ranking";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <HomeOptions />
       <PetProfile />
       <PetAction />
+      <PetRanking />
     </MobileContainer>
   );
 }
