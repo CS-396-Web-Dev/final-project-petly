@@ -5,12 +5,22 @@ import PetInfo from "@/components/molecules/pet-info/pet-info";
 import ActionHappiness from "@/components/molecules/action-happiness/action-happiness";
 import ActionHungriness from "@/components/molecules/action-hungriness/action-hungriness";
 import ActionTraining from "@/components/molecules/action-training/action-training";
+import { useEffect } from "react";
+import { initAOS } from "@/helper/aosHelper";
 import { useModalStore } from "@/ctx/store";
 import "./pet-action.css";
 
 const PetAction = () => {
   const isPetActionOpen = useModalStore((state) => state.modals.petAction);
   const closeModal = useModalStore((state) => state.closeModal);
+
+  useEffect(() => {
+    initAOS({
+      offset: 100,
+      duration: 600,
+      once: true,
+    });
+  }, []);
 
   if (!isPetActionOpen) return null;
 
@@ -28,7 +38,11 @@ const PetAction = () => {
           <p>Happiness</p>
         </span>
 
-        <section className="happiness-section">
+        <section
+          className="happiness-section"
+          data-aos="zoom-in"
+          data-aos-delay="50"
+        >
           <ActionHappiness />
         </section>
 
@@ -36,7 +50,11 @@ const PetAction = () => {
           <p>Hungriness</p>
         </span>
 
-        <section className="hungriness-section">
+        <section
+          className="hungriness-section"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
           <ActionHungriness />
         </section>
 
@@ -44,7 +62,11 @@ const PetAction = () => {
           <p>Training</p>
         </span>
 
-        <section className="training-section">
+        <section
+          className="training-section"
+          data-aos="zoom-in"
+          data-aos-delay="150"
+        >
           <ActionTraining />
         </section>
       </div>

@@ -1,24 +1,20 @@
-"use client";
-import ProtectedRoute from '@/components/ProtectedRoute';
+import MobileContainer from "@/components/organisms/mobile-container/mobile-container";
 import HomeHeader from "@/components/molecules/home-header/home-header";
 import Tamagotchi from "@/components/organisms/tamagotchi/tamagotchi";
-import ButtonGroup from "@/components/molecules/button-group/button-group";
-import "./home.css";
-
-function HomeContent() {
-  return (
-    <main id="home">
-      <HomeHeader />
-      <Tamagotchi />
-      <ButtonGroup />
-    </main>
-  );
-}
+import HomeOptions from "@/components/organisms/home-options/home-options";
+import Dialog from "@/components/organisms/dialog/dialog";
+import PetProfile from "@/components/organisms/pet-profile/pet-profile";
+import PetAction from "@/components/organisms/pet-action/pet-action";
 
 export default function Home() {
   return (
-    <ProtectedRoute>
-      <HomeContent />
-    </ProtectedRoute>
+    <MobileContainer>
+      <HomeHeader />
+      <Tamagotchi />
+      <Dialog />
+      <HomeOptions />
+      <PetProfile />
+      <PetAction />
+    </MobileContainer>
   );
 }

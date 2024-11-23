@@ -1,0 +1,38 @@
+.option-btn-span {
+  color: #070707;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  word-break: break-word;
+  white-space: normal;
+  padding-right: 1rem;
+}
+
+.option-btn {
+  width: fit-content;
+  display: inline-block;
+  padding-right: 2rem;
+}
+
+.option-text {
+  color: #070707;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  word-break: break-word;
+  white-space: normal;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+}
+
+.option-btn-img {
+  position: absolute;
+  right: 6rem;
+  object-fit: cover;
+  user-select: none;
+}

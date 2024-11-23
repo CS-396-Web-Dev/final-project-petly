@@ -1,5 +1,5 @@
 import Image from "next/image";
-import sprite_sheet_all from "../../../../public/sprite_sheet_all.png";
+import sprite_sheet_all from "../../../../public/sprite_sheet/sprite_sheet_all.png";
 import "./hatch.css";
 
 const Hatch = () => {

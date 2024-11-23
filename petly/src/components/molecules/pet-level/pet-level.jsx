@@ -1,5 +1,5 @@
 import Image from "next/image";
-import level_up_img from "../../../../public/level_up.png";
+import level_up_img from "../../../../public/profile/level_up.png";
 import "./pet-level.css";
 
 const PetLevel = () => {

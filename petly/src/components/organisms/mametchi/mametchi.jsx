@@ -1,6 +1,6 @@
 import Image from "next/image";
-import shadow_img from "../../../../public/shadow.png";
-import mametchi_sprite_sheet from "../../../../public/mametchi_sprite_sheet.png";
+import pet_shadow_img from "../../../../public/sprite_sheet/pet_shadow.png";
+import mametchi_sprite_sheet from "../../../../public/sprite_sheet/mametchi_sprite_sheet.png";
 import "./mametchi.css";
 
 const Mametchi = () => {
@@ -19,7 +19,7 @@ const Mametchi = () => {
       </div>
       <Image
         className="pixel-shadow pixel-art"
-        src={shadow_img}
+        src={pet_shadow_img}
         alt=""
         width={32}
         height={32}

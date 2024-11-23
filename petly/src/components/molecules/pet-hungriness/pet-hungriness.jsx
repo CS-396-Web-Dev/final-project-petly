@@ -1,5 +1,5 @@
 import Image from "next/image";
-import hungry_face_img from "../../../../public/hungry_face.png";
+import hungry_normal_img from "../../../../public/profile/hungry_normal.png";
 import "./pet-hungriness.css";
 
 const PetHungriness = () => {
@@ -17,9 +17,9 @@ const PetHungriness = () => {
         </div>
         <div className="hungriness">
           <Image
-            src={hungry_face_img}
+            src={hungry_normal_img}
             alt=""
-            className="hungry-face-img"
+            className="hungriness-img"
             priority
           />
         </div>

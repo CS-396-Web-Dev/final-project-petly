@@ -1,7 +1,8 @@
 "use client";
+import Image from "next/image";
 import { useState, useEffect } from "react";
-import shadow_img from "../../../../public/shadow_2.png";
-import mametchi_sprite_sheet from "../../../../public/mametchi_sprite_sheet.png";
+import pet_info_shadow_img from "../../../../public/sprite_sheet/pet_info_shadow.png";
+import mametchi_sprite_sheet from "../../../../public/sprite_sheet/mametchi_sprite_sheet.png";
 import "./pet-info.css";
 
 const PetInfo = () => {
@@ -28,9 +29,9 @@ const PetInfo = () => {
         }}
       ></div>
 
-      <img
+      <Image
         className="pet-shadow"
-        src={shadow_img.src}
+        src={pet_info_shadow_img}
         alt=""
         width={32}
         height={32}
