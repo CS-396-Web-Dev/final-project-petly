@@ -1,14 +1,9 @@
 "use client";
-import Image from "next/image";
 import BackModal from "@/components/atoms/back-modal/back-modal";
 import TextBtn from "@/components/atoms/text-btn/text-btn";
 import RankTopThree from "@/components/molecules/rank-top-three-section/rank-top-three-section";
 import RankTopFive from "@/components/molecules/rank-top-five-section/rank-top-five-section";
 import { useModalStore } from "@/ctx/store";
-import pet_info_shadow_img from "../../../../public/sprite_sheet/pet_info_shadow.png";
-import badge_1 from "../../../../public/rank/badge_1.svg";
-import badge_2 from "../../../../public/rank/badge_2.svg";
-import badge_3 from "../../../../public/rank/badge_3.svg";
 import "./pet-ranking.css";
 
 const PetRanking = () => {
