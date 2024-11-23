@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import three_dots_img from "../../../../public/three_dots.png";
+import three_dots_img from "../../../../public/btn/three_dots.png";
 import { useModalStore } from "@/ctx/store";
 import "./home-header.css";
 

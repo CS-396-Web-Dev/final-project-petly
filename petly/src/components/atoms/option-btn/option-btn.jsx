@@ -1,5 +1,5 @@
 import Image from "next/image";
-import right_arrow_img from "../../../../public/right_arrow.svg";
+import right_arrow_img from "../../../../public/btn/right_arrow.svg";
 import "./option-btn.css";
 
 const OptionBtn = ({text, onBtnClicked}) => {

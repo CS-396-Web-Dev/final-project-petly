@@ -1,10 +1,10 @@
 import Image from "next/image";
-import dialog_btn from "../../../../public/dialog_btn.png";
-import "./pet-dialog.css";
+import dialog_btn from "../../../../public/btn/dialog_btn.png";
+import "./dialog.css";
 
-const PetDialog = () => {
+const Dialog = () => {
   return (
-    <section id="pet-dialog">
+    <section id="dialog">
       <div className="dialog-outer">
         <div className="dialog-inner">
           <p>I’m happy, please play with me...</p>
@@ -15,4 +15,4 @@ const PetDialog = () => {
   );
 };
 
-export default PetDialog;
+export default Dialog;

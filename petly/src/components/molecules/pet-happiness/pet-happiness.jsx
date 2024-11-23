@@ -1,5 +1,5 @@
 import Image from "next/image";
-import happy_face_img from "../../../../public/happy_face.png";
+import happy_good_img from "../../../../public/profile/happy_good.png";
 import "./pet-happiness.css";
 
 const PetHappiness = () => {
@@ -17,9 +17,9 @@ const PetHappiness = () => {
         </div>
         <div className="happiness">
           <Image
-            src={happy_face_img}
+            src={happy_good_img}
             alt=""
-            className="happy-face-img"
+            className="happiness-img"
             priority
           />
         </div>

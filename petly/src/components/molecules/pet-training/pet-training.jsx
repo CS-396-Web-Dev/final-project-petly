@@ -1,5 +1,5 @@
 import Image from "next/image";
-import training_normal_img from "../../../../public/training_normal.png";
+import training_normal_img from "../../../../public/profile/training_normal.png";
 import "./pet-training.css";
 
 const PetTraining = () => {
@@ -19,7 +19,7 @@ const PetTraining = () => {
           <Image
             src={training_normal_img}
             alt=""
-            className="training_normal_img"
+            className="training_img"
             priority
           />
         </div>
