@@ -3,7 +3,7 @@ import BackModal from "@/components/atoms/back-modal/back-modal";
 import TextBtn from "@/components/atoms/text-btn/text-btn";
 import { useModalStore } from "@/ctx/store";
 import Image from "next/image";
-import invite_img from "../../../../public/sprite_sheet/mametchi_sprite_sheet.png";
+import invite_img from "../../../../public/rank/invite_friend.svg";
 import "./invite.css";
 
 const Invite = () => {
@@ -21,8 +21,8 @@ const Invite = () => {
           src={invite_img}
           className="invite_img"
           alt="Invite Friends"
-          width={200}
-          height={200}
+          width={250}
+          height={250}
         />
         <h2 className="invite-title">Invite Your Friends to Petly</h2>
         <p className="invite-description">
