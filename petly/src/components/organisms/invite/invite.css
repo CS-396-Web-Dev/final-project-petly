@@ -62,3 +62,24 @@
   .invite-btn:hover {
     background-color: #555;
   }
+
+  .copy-feedback {
+    font-size: 14px;
+    color: #4caf50;
+    animation: fade-in-out 2s ease-in-out;
+  }
+  
+  @keyframes fade-in-out {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
