@@ -19,7 +19,7 @@ export default function Signup() {
     setIsLoading(true);
     try {
       await signup(email, password);
-      router.push('/home');
+      router.push('/new-user');
     } catch (err) {
       setError('Failed to create account');
     } finally {
