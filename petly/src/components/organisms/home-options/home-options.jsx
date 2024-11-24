@@ -39,6 +39,11 @@ const HomeOptions = () => {
     openModal("petRanking");
   };
 
+  const onInviteBtnClicked = () => {
+    closeModal("homeOptions");
+    openModal("invite");
+  };
+
   return (
     <section id="home-options-wrapper">
       <BackModal />
@@ -65,6 +70,12 @@ const HomeOptions = () => {
           <OptionBtn
             text={"Pet Ranking"}
             onBtnClicked={() => onPetRankingBtnClicked()}
+          />
+        </div>
+        <div className="home-option" data-aos="fade-up" data-aos-delay="150">
+          <OptionBtn
+            text={"Friends"}
+            onBtnClicked={() => onInviteBtnClicked()}
           />
         </div>
         <div className="home-option" data-aos="fade-up" data-aos-delay="200">

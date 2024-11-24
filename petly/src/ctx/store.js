@@ -21,6 +21,7 @@ export const useModalStore = create((set) => ({
     petProfile: false,
     petAction: false,
     petRanking: false,
+    invite: false,
     homeOptions: false,
   },
   openModal: (name) =>
