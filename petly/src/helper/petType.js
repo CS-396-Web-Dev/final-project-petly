@@ -1,0 +1,6 @@
+export const PetType = {
+  DOGGCHI: "DOGGCHI",
+  LOVELITCHI: "LOVELITCHI",
+  MAMETCHI: "MAMETCHI",
+  MILKTCHI: "MILKTCHI",
+};
