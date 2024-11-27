@@ -4,3 +4,8 @@ export const PetType = {
   MAMETCHI: "MAMETCHI",
   MILKTCHI: "MILKTCHI",
 };
+
+export const StageType = {
+  HATCH: "HATCH",
+  ADULT: "ADULT",
+}
