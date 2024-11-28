@@ -1,8 +1,5 @@
-"use client";
+import { PetType } from "@/helper/type";
 import Image from "next/image";
-import { useState } from "react";
-import { usePetStore } from "@/ctx/store";
-import { PetType } from "@/helper/petType";
 import doggchi from "../../../../public/new-user/doggchi.gif";
 import lovelitchi from "../../../../public/new-user/lovelitchi.gif";
 import mametchi from "../../../../public/new-user/mametchi.gif";
@@ -10,12 +7,7 @@ import milktchi from "../../../../public/new-user/milktchi.gif";
 import random from "../../../../public/new-user/random.svg";
 import "./pet-picker.css";
 
-const PetPicker = () => {
-  const { setPetType } = usePetStore((state) => ({
-    setPetType: state.setPetType,
-  }));
-  const [selectedPet, setSelectedPet] = useState(null);
-
+const PetPicker = ({ petType, onPetTypeChange }) => {
   const petImages = {
     [PetType.DOGGCHI]: doggchi,
     [PetType.LOVELITCHI]: lovelitchi,
@@ -30,16 +22,6 @@ const PetPicker = () => {
     [PetType.MILKTCHI]: "Milktchi",
   };
 
-  const handleRandomClick = () => {
-    setSelectedPet(null);
-    setPetType(null);
-  };
-
-  const handlePetClick = (pet) => {
-    setSelectedPet(pet);
-    setPetType(pet);
-  };
-
   return (
     <>
       <p className="pet-picker-heading">Pick your pet!</p>
@@ -47,10 +29,8 @@ const PetPicker = () => {
         {Object.values(PetType).map((pet) => (
           <button
             key={pet}
-            className={`pet-picker-button ${
-              selectedPet === pet ? "selected" : ""
-            }`}
-            onClick={() => handlePetClick(pet)}
+            className={`pet-picker-button ${petType === pet ? "selected" : ""}`}
+            onClick={() => onPetTypeChange(pet)}
           >
             <Image
               className="pet-picker-img"
@@ -66,9 +46,9 @@ const PetPicker = () => {
         <button
           key="random"
           className={`pet-picker-button ${
-            selectedPet === null ? "selected" : ""
+            petType === undefined ? "selected" : ""
           }`}
-          onClick={handleRandomClick}
+          onClick={() => onPetTypeChange(undefinedF)}
         >
           <Image
             className="pet-picker-img"

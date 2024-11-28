@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { PetType } from "@/helper/petType";
+import { StageType } from "@/helper/type";
 
 const logger = (config) => (set, get, api) =>
   config(
@@ -40,12 +40,39 @@ export const usePetStore = create(
   logger(
     persist(
       (set) => ({
-        stage: "",
-        petName: "",
-        setPetName: (petName) => set({ petName }),
-        petType: null,
-        setPetType: (petType) => set({ petType }),
-        evolve: () => set(() => ({ stage: "Adult" })),
+        petName: undefined,
+        petType: undefined,
+
+        petHappiness: undefined,
+
+        petHungriness: undefined,
+
+        petTraining: undefined,
+
+        petStage: undefined,
+        evolve: () =>
+          set(() => ({
+            petStage: StageType.ADULT,
+            petHappiness: 100,
+            petHungriness: 100,
+            petTraining: 100,
+          })),
+
+        petExp: undefined,
+
+        petLevel: undefined,
+        levelUp: () =>
+          set((state) => ({
+            petLevel: (state.petLevel || 0) + 1,
+          })),
+
+        initPet: (petName, petType) =>
+          set(() => ({
+            petName,
+            petType,
+            petStage: StageType.HATCH,
+            petLevel: 1,
+          })),
       }),
       {
         name: "petly-storage",

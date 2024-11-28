@@ -1,16 +1,9 @@
-"use client";
 import { useRouter } from "next/navigation";
-import { usePetStore } from "@/ctx/store";
-import { PetType } from "@/helper/petType";
+import { PetType } from "@/helper/type";
 import "./new-user-btn.css";
 
-const NewUserBtn = () => {
+const NewUserBtn = ({ petName, petType, initPet }) => {
   const router = useRouter();
-  const { petName, petType, setPetType } = usePetStore((state) => ({
-    petName: state.petName,
-    petType: state.petType,
-    setPetType: state.setPetType,
-  }));
 
   const handleClick = () => {
     if (!petName || petName.trim() === "") {
@@ -18,12 +11,13 @@ const NewUserBtn = () => {
       return;
     }
 
-    if (!petType) {
-      const petOptions = Object.values(PetType);
-      const randomPet =
-        petOptions[Math.floor(Math.random() * petOptions.length)];
-      setPetType(randomPet);
+    let finalPetType = petType;
+    if (petType === undefined) {
+      const options = Object.values(PetType);
+      finalPetType = options[Math.floor(Math.random() * options.length)];
     }
+
+    initPet(petName, finalPetType);
 
     router.push("/home");
   };
