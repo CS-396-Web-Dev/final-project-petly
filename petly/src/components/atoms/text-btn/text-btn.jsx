@@ -1,10 +1,11 @@
+import Link from "next/link";
 import "./text-btn.css";
 
-const TextBtn = ({ text, onBtnClicked }) => {
+const TextBtn = ({ text }) => {
   return (
-    <button className="text-btn" onClick={onBtnClicked}>
+    <Link href="/" className="text-btn">
       <p>{text}</p>
-    </button>
+    </Link>
   );
 };
 
