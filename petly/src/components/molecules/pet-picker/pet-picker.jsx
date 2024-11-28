@@ -1,3 +1,4 @@
+"use client"
 import { PetType } from "@/helper/type";
 import Image from "next/image";
 import doggchi from "../../../../public/new-user/doggchi.gif";
@@ -20,6 +21,18 @@ const PetPicker = ({ petType, onPetTypeChange }) => {
     [PetType.LOVELITCHI]: "Lovelitchi",
     [PetType.MAMETCHI]: "Mametchi",
     [PetType.MILKTCHI]: "Milktchi",
+  };
+
+  const handleRandomPetSelection = () => {
+    const petTypesArray = [
+      PetType.DOGGCHI,
+      PetType.LOVELITCHI,
+      PetType.MAMETCHI,
+      PetType.MILKTCHI,
+    ];
+    const randomPet =
+      petTypesArray[Math.floor(Math.random() * petTypesArray.length)];
+    onPetTypeChange(randomPet);
   };
 
   return (
@@ -45,10 +58,8 @@ const PetPicker = ({ petType, onPetTypeChange }) => {
         ))}
         <button
           key="random"
-          className={`pet-picker-button ${
-            petType === undefined ? "selected" : ""
-          }`}
-          onClick={() => onPetTypeChange(undefinedF)}
+          className={`pet-picker-button ${!petType ? "selected" : ""}`}
+          onClick={handleRandomPetSelection}
         >
           <Image
             className="pet-picker-img"
