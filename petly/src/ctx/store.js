@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { PetType } from "@/helper/petType";
 
 const logger = (config) => (set, get, api) =>
   config(
@@ -39,7 +40,11 @@ export const usePetStore = create(
   logger(
     persist(
       (set) => ({
-        stage: "Hatch",
+        stage: "",
+        petName: "",
+        setPetName: (petName) => set({ petName }),
+        petType: null,
+        setPetType: (petType) => set({ petType }),
         evolve: () => set(() => ({ stage: "Adult" })),
       }),
       {

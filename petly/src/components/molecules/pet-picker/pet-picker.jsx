@@ -1,80 +1,88 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
+import { usePetStore } from "@/ctx/store";
+import { PetType } from "@/helper/petType";
+import doggchi from "../../../../public/new-user/doggchi.gif";
+import lovelitchi from "../../../../public/new-user/lovelitchi.gif";
+import mametchi from "../../../../public/new-user/mametchi.gif";
+import milktchi from "../../../../public/new-user/milktchi.gif";
+import random from "../../../../public/new-user/random.svg";
 import "./pet-picker.css";
 
-import questionMarkGif from "../../../../public/picker/question_mark.gif";
-import doggchiGif from "../../../../public/picker/doggchi.gif";
-import lovelitchiGif from "../../../../public/picker/lovelitchi.gif";
-import mametchiGif from "../../../../public/picker/mametchi.gif";
-import milktchiGif from "../../../../public/picker/milktchi.gif";
-
-const pets = [
-  { id: "doggchi", name: "Doggchi", gif: doggchiGif },
-  { id: "lovelitchi", name: "Lovelitchi", gif: lovelitchiGif },
-  { id: "mametchi", name: "Mametchi", gif: mametchiGif },
-  { id: "milktchi", name: "Milktchi", gif: milktchiGif },
-  { id: "random", name: "Random", gif: questionMarkGif }, // Random button is now the last button
-];
-
-const Home = () => {
+const PetPicker = () => {
+  const { setPetType } = usePetStore((state) => ({
+    setPetType: state.setPetType,
+  }));
   const [selectedPet, setSelectedPet] = useState(null);
 
-  const selectPet = (pet) => {
-    if (pet.id === "random") {
-      const randomIndex = Math.floor(Math.random() * (pets.length - 1));
-      setSelectedPet(pets[randomIndex]);
-    } else {
-      setSelectedPet(pet);
-    }
+  const petImages = {
+    [PetType.DOGGCHI]: doggchi,
+    [PetType.LOVELITCHI]: lovelitchi,
+    [PetType.MAMETCHI]: mametchi,
+    [PetType.MILKTCHI]: milktchi,
+  };
+
+  const petNames = {
+    [PetType.DOGGCHI]: "Doggchi",
+    [PetType.LOVELITCHI]: "Lovelitchi",
+    [PetType.MAMETCHI]: "Mametchi",
+    [PetType.MILKTCHI]: "Milktchi",
+  };
+
+  const handleRandomClick = () => {
+    setSelectedPet(null);
+    setPetType(null);
+  };
+
+  const handlePetClick = (pet) => {
+    setSelectedPet(pet);
+    setPetType(pet);
   };
 
   return (
-    <div>
+    <>
       <p className="pet-picker-heading">Pick your pet!</p>
       <div className="pet-picker-container">
-        {pets.map((pet) => (
+        {Object.values(PetType).map((pet) => (
           <button
-            key={pet.id}
+            key={pet}
             className={`pet-picker-button ${
-              selectedPet?.id === pet.id ? "selected" : ""
+              selectedPet === pet ? "selected" : ""
             }`}
-            onClick={() => selectPet(pet)}
+            onClick={() => handlePetClick(pet)}
           >
             <Image
-              className="pet-gif"
-              src={pet.gif}
-              alt={`${pet.name}`}
+              className="pet-picker-img"
+              src={petImages[pet]}
+              alt=""
               width={48}
               height={48}
+              priority
             />
-            <p className="pet-name">{pet.name}</p>
+            <p className="pet-picker-name">{petNames[pet]}</p>
           </button>
         ))}
+        <button
+          key="random"
+          className={`pet-picker-button ${
+            selectedPet === null ? "selected" : ""
+          }`}
+          onClick={handleRandomClick}
+        >
+          <Image
+            className="pet-picker-img"
+            src={random}
+            alt=""
+            width={48}
+            height={48}
+            priority
+          />
+          <p className="pet-picker-name">Random</p>
+        </button>
       </div>
-
-      <div className="action-buttons">
-        {selectedPet ? (
-          <Link href="/home" passHref>
-            <button className="next-button">Next</button>
-          </Link>
-        ) : (
-          <button className="next-button" onClick={() => alert("Please select a pet first!")}>
-            Next
-          </button>
-        )}
-      </div>
-
-      {selectedPet && (
-        <div className="selected-pet-info">
-          <p className="selected-pet-name">
-            <strong>{selectedPet.name}</strong> IS YOUR PET NOW.
-          </p>
-        </div>
-      )}
-    </div>
+    </>
   );
 };
 
-export default Home;
+export default PetPicker;
