@@ -1,6 +1,6 @@
 "use client";
 import BackModal from "@/components/atoms/back-modal/back-modal";
-import TextBtn from "@/components/atoms/text-btn/text-btn";
+import CloseBtn from "@/components/atoms/close-btn/close-btn";
 import OptionBtn from "@/components/atoms/option-btn/option-btn";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -48,7 +48,7 @@ const HomeOptions = () => {
     <section id="home-options-wrapper">
       <BackModal />
       <div id="home-options">
-        <TextBtn
+        <CloseBtn
           text={"Close"}
           onBtnClicked={() => closeModal("homeOptions")}
           data-aos="fade-up"

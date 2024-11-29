@@ -1,6 +1,6 @@
 "use client";
 import BackModal from "@/components/atoms/back-modal/back-modal";
-import TextBtn from "@/components/atoms/text-btn/text-btn";
+import CloseBtn from "@/components/atoms/close-btn/close-btn";
 import PetInfo from "@/components/molecules/pet-info/pet-info";
 import ActionHappiness from "@/components/molecules/action-happiness/action-happiness";
 import ActionHungriness from "@/components/molecules/action-hungriness/action-hungriness";
@@ -28,7 +28,7 @@ const PetAction = () => {
     <section id="pet-action-wrapper">
       <BackModal />
       <div id="pet-action">
-        <TextBtn text={"Close"} onBtnClicked={() => closeModal("petAction")} />
+        <CloseBtn text={"Close"} onBtnClicked={() => closeModal("petAction")} />
 
         <section className="pet-info-section">
           <PetInfo />
