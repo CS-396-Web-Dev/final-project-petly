@@ -1,12 +1,13 @@
 "use client";
-import { createContext, useContext, useEffect, useState } from 'react';
-import { auth } from '../firebase/config';
+import { createContext, useContext, useEffect, useState } from "react";
+import { auth, db } from "../firebase/config";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged
-} from 'firebase/auth';
+  onAuthStateChanged,
+} from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 
 const AuthContext = createContext({});
 
@@ -33,13 +34,33 @@ export const AuthContextProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const login = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
+  const login = async (email, password) => {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const currentUser = userCredential.user;
+
+    const userDoc = await getUserData(currentUser.uid);
+    if (!userDoc) {
+      console.log("No user data found in Firestore for:", currentUser.uid);
+      return { user: currentUser, hasData: false };
+    }
+
+    console.log("User data found:", userDoc);
+    setUser(currentUser);
+    return { user: currentUser, hasData: true, data: userDoc };
   };
 
   const logout = async () => {
     setUser(null);
     await signOut(auth);
+  };
+
+  const getUserData = async (uid) => {
+    const docRef = doc(db, "users", uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return docSnap.data();
+    }
+    return null;
   };
 
   return (

@@ -1,6 +1,6 @@
 "use client";
 import BackModal from "@/components/atoms/back-modal/back-modal";
-import TextBtn from "@/components/atoms/text-btn/text-btn";
+import CloseBtn from "@/components/atoms/close-btn/close-btn";
 import PetInfo from "@/components/molecules/pet-info/pet-info";
 import PetLevel from "@/components/molecules/pet-level/pet-level";
 import PetHappiness from "@/components/molecules/pet-happiness/pet-happiness";
@@ -19,7 +19,7 @@ const PetProfile = () => {
     <section id="pet-profile-wrapper">
       <BackModal />
       <div id="pet-profile">
-        <TextBtn text={"Close"} onBtnClicked={() => closeModal("petProfile")} />
+        <CloseBtn text={"Close"} onBtnClicked={() => closeModal("petProfile")} />
 
         <section className="pet-info-section">
           <PetInfo />
