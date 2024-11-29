@@ -1,15 +1,15 @@
 "use client";
-import { useState } from 'react';
-import { useAuth } from '@/ctx/AuthContext';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import MobileContainer from '@/components/atoms/mobile-container/mobile-container';
-import TextBtn from '@/components/atoms/text-btn/text-btn';
+import { useState } from "react";
+import { useAuth } from "@/ctx/AuthContext";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import MobileContainer from "@/components/atoms/mobile-container/mobile-container";
+import TextBtn from "@/components/atoms/text-btn/text-btn";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
   const router = useRouter();
@@ -17,11 +17,17 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+
     try {
-      await login(email, password);
-      router.push('/home');
+      const { user, hasData } = await login(email, password);
+
+      if (hasData) {
+        router.push("/home");
+      } else {
+        router.push("/new-user");
+      }
     } catch (err) {
-      setError('Invalid email or password');
+      setError("Invalid email or password");
     } finally {
       setIsLoading(false);
     }
@@ -32,11 +38,9 @@ export default function Login() {
       <MobileContainer>
         <div className="relative w-full">
           <TextBtn text="close" />
-          
           <div className="w-full flex flex-col items-center pt-16 px-6 animate-[fadeIn_0.6s_ease-out]">
             <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-violet-500 via-purple-500 to-fuchsia-500 p-[2px] mb-8">
               <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-                {/* ADD OUR LOGO HERE */}
                 <span className="text-2xl">🐾</span>
               </div>
             </div>
@@ -95,16 +99,18 @@ export default function Login() {
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
                       Signing in...
                     </div>
-                  ) : 'Sign in'}
+                  ) : (
+                    "Sign in"
+                  )}
                 </span>
               </button>
             </form>
 
             <div className="mt-8 text-center">
               <p className="font-['Inter'] text-sm text-[#9098a3]">
-                Don't have an account?{' '}
-                <Link 
-                  href="/signup" 
+                Don't have an account?{" "}
+                <Link
+                  href="/signup"
                   className="text-purple-600 font-semibold hover:text-purple-700 transition-colors"
                 >
                   Sign up

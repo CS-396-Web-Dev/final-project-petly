@@ -1,4 +1,3 @@
-"use client";
 import Link from 'next/link';
 import MobileContainer from '@/components/atoms/mobile-container/mobile-container';
 

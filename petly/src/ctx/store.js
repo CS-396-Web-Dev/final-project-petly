@@ -1,6 +1,8 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { StageType } from "@/helper/type";
+import { db } from "@/firebase/config";
+import { doc, updateDoc, getDoc, setDoc } from "firebase/firestore";
 
 const logger = (config) => (set, get, api) =>
   config(
@@ -39,17 +41,27 @@ export const useModalStore = create((set) => ({
 export const usePetStore = create(
   logger(
     persist(
-      (set) => ({
-        petName: undefined,
-        petType: undefined,
+      (set, get) => ({
+        petName: "",
+        petType: "",
+        petHappiness: 100,
+        petHungriness: 100,
+        petTraining: 0,
+        petStage: StageType.HATCH,
+        petExp: 0,
+        petLevel: 1,
 
-        petHappiness: undefined,
+        initPet: (petName, petType) =>
+          set(() => ({
+            petName,
+            petType,
+            petStage: StageType.HATCH,
+            petLevel: 1,
+            petHappiness: 100,
+            petHungriness: 100,
+            petTraining: 0,
+          })),
 
-        petHungriness: undefined,
-
-        petTraining: undefined,
-
-        petStage: undefined,
         evolve: () =>
           set(() => ({
             petStage: StageType.ADULT,
@@ -58,21 +70,54 @@ export const usePetStore = create(
             petTraining: 100,
           })),
 
-        petExp: undefined,
-
-        petLevel: undefined,
         levelUp: () =>
           set((state) => ({
-            petLevel: (state.petLevel || 0) + 1,
+            petLevel: state.petLevel + 1,
           })),
 
-        initPet: (petName, petType) =>
+        updateAttribute: async (uid, attribute, value) => {
+          const docRef = doc(db, "users", uid);
+          await updateDoc(docRef, { [attribute]: value });
+          set(() => ({ [attribute]: value }));
+        },
+
+        updateAttributes: async (uid, updates) => {
+          const docRef = doc(db, "users", uid);
+          await updateDoc(docRef, updates);
+          set(() => updates);
+        },
+
+        syncWithFirebase: async (uid) => {
+          const docRef = doc(db, "users", uid);
+          const snapshot = await getDoc(docRef);
+          if (snapshot.exists()) {
+            const data = snapshot.data();
+            set(() => data);
+          }
+        },
+        setPetDetails: (data) =>
           set(() => ({
-            petName,
-            petType,
-            petStage: StageType.HATCH,
-            petLevel: 1,
+            ...data,
           })),
+          
+          resetPetDetails: () =>
+            set(() => ({
+              petName: "",
+              petType: "",
+              petHappiness: 100,
+              petHungriness: 100,
+              petTraining: 0,
+              petStage: "HATCH",
+              petExp: 0,
+              petLevel: 1,
+            })),
+
+
+        saveToFirebase: async (uid) => {
+          const petData = get();
+          const docRef = doc(db, "users", uid);
+          await setDoc(docRef, petData, { merge: true });
+        },
       }),
       {
         name: "petly-storage",
