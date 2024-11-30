@@ -6,7 +6,7 @@ import Mametchi from "@/components/atoms/mametchi/mametchi";
 import Milktchi from "@/components/atoms/milktchi/milktchi";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 
-const PetDisplayUid = ({ userId }) => {
+const PetDisplay = ({ userId }) => {
   const [petType, setPetType] = useState(null);
 
   useEffect(() => {
@@ -35,12 +35,12 @@ const PetDisplayUid = ({ userId }) => {
       case "MILKTCHI":
         return <Milktchi />;
       default:
-        console.warn("Unknown pet type, defaulting to DoggChi:", type);
-        return <DoggChi />;
+        console.warn("Unknown pet type:", type);
+        return null;
     }
   };
 
   return <>{getPetComponent(petType)}</>;
 };
 
-export default PetDisplayUid;
+export default PetDisplay;

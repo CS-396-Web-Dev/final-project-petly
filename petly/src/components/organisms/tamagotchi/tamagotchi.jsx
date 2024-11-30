@@ -1,16 +1,15 @@
 "use client";
-import Hatch from "@/components/organisms/hatch/hatch";
-import Mametchi from "@/components/atoms/mametchi/mametchi";
-import Milktchi from "@/components/atoms/milktchi/milktchi";
-import DoggChi from "../../atoms/doggchi/doggchi";
-import LoveLitchi from "../../atoms/lovelitch/lovelitchi";
-
+import React from "react";
+import { useAuth } from "@/ctx/AuthContext";
+import PetDisplay from "@/components/molecules/pet-display/pet-display";
 import "./tamagotchi.css";
 
 const Tamagotchi = () => {
+  const { user } = useAuth();
+
   return (
     <>
-      <Mametchi />
+      <PetDisplay userId={user.uid} />
     </>
   );
 };
