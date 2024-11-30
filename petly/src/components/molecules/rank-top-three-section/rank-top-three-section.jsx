@@ -11,8 +11,8 @@ import badge_3 from "../../../../public/rank/badge_3.svg";
 const PetRankTopThree = () => {
   const [topThree, setTopThree] = useState([]);
 
-  const badges = [badge_1, badge_2, badge_3]; // 徽章图片数组
-  const positions = ["rank-first", "rank-second", "rank-third"]; // 位置类名数组
+  const badges = [badge_1, badge_2, badge_3];
+  const positions = ["rank-first", "rank-second", "rank-third"];
 
   useEffect(() => {
     const fetchRanking = async () => {
