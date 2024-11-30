@@ -1,9 +1,9 @@
 "use client";
 import Hatch from "@/components/organisms/hatch/hatch";
-import Mametchi from "@/components/organisms/mametchi/mametchi";
-import Milktchi from "@/components/organisms/milktchi/milktchi";
-import DoggChi from "../doggchi/doggchi";
-import LoveLitchi from "../lovelitch/lovelitchi";
+import Mametchi from "@/components/atoms/mametchi/mametchi";
+import Milktchi from "@/components/atoms/milktchi/milktchi";
+import DoggChi from "../../atoms/doggchi/doggchi";
+import LoveLitchi from "../../atoms/lovelitch/lovelitchi";
 
 import "./tamagotchi.css";
 
