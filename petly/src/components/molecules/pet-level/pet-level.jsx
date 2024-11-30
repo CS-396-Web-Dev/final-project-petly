@@ -7,8 +7,9 @@ import "./pet-level.css";
 
 const PetLevel = ({ userId }) => {
   const [petLevel, setPetLevel] = useState("Loading...");
-  const [currentExp, setCurrentExp] = useState(0);
-  const [nextLevelExp, setNextLevelExp] = useState(0);
+  const [petExp, setPetExp] = useState(0);
+  const [nextExp, setNextExp] = useState(1000);
+  const [progressBarWidth, setProgressBarWidth] = useState(0);
 
   useEffect(() => {
     const fetchPetLevel = async () => {
@@ -20,8 +21,20 @@ const PetLevel = ({ userId }) => {
         if (userDoc.exists()) {
           const userData = userDoc.data();
           const level = userData.petLevel || "Unknown";
+          const exp = userData.petExp || 0;
 
           setPetLevel(level);
+          setPetExp(exp);
+
+          const calculateNextExp = () => {
+            return (Math.floor(exp / 1000) + 1) * 1000;
+          };
+
+          const calculatedNextExp = calculateNextExp();
+          setNextExp(calculatedNextExp);
+
+          const progress = Math.min((exp / calculatedNextExp) * 100, 100);
+          setProgressBarWidth(progress);
         } else {
           console.error("No such user document!");
           setPetLevel("Unknown");
@@ -35,14 +48,56 @@ const PetLevel = ({ userId }) => {
     fetchPetLevel();
   }, [userId]);
 
+  useEffect(() => {
+    const styleSheet = document.styleSheets[0];
+    const animationName = `progressAnimationLevel-${Math.floor(
+      Math.random() * 1000
+    )}`;
+    const keyframes = `
+      @keyframes ${animationName} {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: ${progressBarWidth}%;
+        }
+      }
+    `;
+
+    styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+
+    const progressBar = document.querySelector(".pet-level-progress-bar");
+    if (progressBar) {
+      progressBar.style.animation = `${animationName} 6s forwards`;
+      progressBar.style.backgroundColor = "#24b874";
+    }
+
+    return () => {
+      const index = Array.from(styleSheet.cssRules).findIndex(
+        (rule) => rule.name === animationName
+      );
+      if (index !== -1) {
+        styleSheet.deleteRule(index);
+      }
+    };
+  }, [progressBarWidth]);
+
   return (
     <>
       <p className="pet-level-text">Level {petLevel}</p>
-      <p className="pet-level-subtext">800 Points to next level</p>
+      <p className="pet-level-subtext">
+        {nextExp - petExp} Points to next level
+      </p>
 
       <div className="pet-level">
         <div className="pet-level-progress progress-moved">
-          <div className="pet-level-progress-bar"></div>
+          <div
+            className="pet-level-progress-bar"
+            style={{
+              width: `${progressBarWidth}%`,
+              backgroundColor: "#24b874", // This is different from happiness and hungriness, so I set the background color of the progressBar to be green.
+            }}
+          ></div>
         </div>
         <div className="level-up-container">
           <Image src={level_up_img} alt="" className="level-up-img" priority />
@@ -50,7 +105,7 @@ const PetLevel = ({ userId }) => {
       </div>
 
       <p className="pet-exp-text">
-        <span>5200</span>/6000
+        <span>{petExp}</span>/{nextExp}
       </p>
     </>
   );

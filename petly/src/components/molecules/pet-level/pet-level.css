@@ -61,7 +61,7 @@
   animation: progressAnimationLevel 6s;
 }
 
-@keyframes progressAnimationLevel {
+/* @keyframes progressAnimationLevel {
   0% {
     width: 5%;
     background-color: #24b874;
@@ -70,7 +70,7 @@
     width: 85%;
     background-color: #24b874;
   }
-}
+} */
 
 .level-up-container {
   position: absolute;
