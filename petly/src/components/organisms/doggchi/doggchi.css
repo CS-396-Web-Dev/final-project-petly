@@ -1,0 +1,68 @@
+:root {
+    --pixel-size: 6;
+  }
+  
+  #doggchi {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .doggchi-wrapper {
+    width: calc(32px * var(--pixel-size));
+    height: calc(32px * var(--pixel-size));
+    overflow: hidden;
+    position: relative;
+    margin: 4em auto;
+  }
+  
+  .doggchi-spritesheet {
+    display: block;
+    position: absolute;
+    width: calc(352px * var(--pixel-size));
+    max-width: none;
+    animation: regularSpriteSheet 2s steps(11) infinite;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .pixel-shadow {
+    position: absolute;
+    bottom: 4rem;
+    width: calc(32px * var(--pixel-size));
+    height: calc(32px * var(--pixel-size));
+    z-index: -1;
+  }
+  
+  .pixel-art {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+  
+  .sad {
+    top: calc(-32px * var(--pixel-size));
+    left: calc(4 * -32px * var(--pixel-size));
+    animation: sadSpritesheet 2s steps(6) infinite !important;
+  }
+  
+  @keyframes regularSpriteSheet {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(calc(-100%), 0, 0);
+    }
+  }
+  
+  @keyframes sadSpritesheet {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(calc(-32px * 6 * var(--pixel-size)), 0, 0);
+    }
+  }
+  
