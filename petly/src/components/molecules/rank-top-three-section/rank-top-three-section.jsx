@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/firebase/config";
 import RankTopThree from "@/components/atoms/rank-top-three-item/rank-top-three-item";
 import pet_info_shadow_img from "../../../../public/sprite_sheet/pet_info_shadow.png";
 import badge_1 from "../../../../public/rank/badge_1.svg";
@@ -10,10 +11,12 @@ import badge_3 from "../../../../public/rank/badge_3.svg";
 const PetRankTopThree = () => {
   const [topThree, setTopThree] = useState([]);
 
+  const badges = [badge_1, badge_2, badge_3]; // 徽章图片数组
+  const positions = ["rank-first", "rank-second", "rank-third"]; // 位置类名数组
+
   useEffect(() => {
     const fetchRanking = async () => {
       try {
-        const db = getFirestore();
         const usersCollection = collection(db, "users");
         const snapshot = await getDocs(usersCollection);
 
@@ -22,7 +25,7 @@ const PetRankTopThree = () => {
           const data = doc.data();
           users.push({
             petExp: data.petExp || 0,
-            petName: data.petName || "Unknown",
+            petName: data.petName || "N/A",
           });
         });
 
@@ -45,27 +48,16 @@ const PetRankTopThree = () => {
 
   return (
     <>
-      <RankTopThree
-        rank={1}
-        badgeSrc={badge_1}
-        petShadowSrc={pet_info_shadow_img}
-        petName={topThree[0]?.petName || "Unknown"}
-        positionClass="rank-first"
-      />
-      <RankTopThree
-        rank={2}
-        badgeSrc={badge_2}
-        petShadowSrc={pet_info_shadow_img}
-        petName={topThree[1]?.petName || "Unknown"}
-        positionClass="rank-second"
-      />
-      <RankTopThree
-        rank={3}
-        badgeSrc={badge_3}
-        petShadowSrc={pet_info_shadow_img}
-        petName={topThree[2]?.petName || "Unknown"}
-        positionClass="rank-third"
-      />
+      {topThree.map((user, index) => (
+        <RankTopThree
+          key={index}
+          rank={index + 1}
+          badgeSrc={badges[index]}
+          petShadowSrc={pet_info_shadow_img}
+          petName={user.petName}
+          positionClass={positions[index]}
+        />
+      ))}
     </>
   );
 };
