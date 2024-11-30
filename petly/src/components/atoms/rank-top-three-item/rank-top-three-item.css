@@ -1,0 +1,24 @@
+.rank-item {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+.rank-item .rank-number {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: -1rem;
+}
+  
+.rank-item .pet-shadow {
+    width: 25px;
+    height: 25px;
+}
+  
+.rank-item .pet-name {
+    font-size: 14px;
+    margin-top: 10%;
+}
