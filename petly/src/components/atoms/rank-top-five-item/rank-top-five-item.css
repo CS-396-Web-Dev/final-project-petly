@@ -1,0 +1,45 @@
+.rank-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9f9f9;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  height: 55px;
+}
+
+.rank-row .rank-number {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  width: 10%;
+  text-align: center;
+}
+
+.rank-row .pet-shadow {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+  margin-left: 1rem;
+  margin-top: 1%;
+}
+
+.rank-row .pet-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  flex-grow: 1;
+  text-align: center;
+  margin-top: 1%;
+  margin-left: 10px;
+}
+
+.rank-row .pet-level {
+  font-size: 12px;
+  font-weight: 400;
+  color: #888;
+  width: 15%;
+  text-align: right;
+  margin-top: -2%;
+}

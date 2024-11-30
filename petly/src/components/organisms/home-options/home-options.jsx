@@ -36,7 +36,12 @@ const HomeOptions = () => {
 
   const onPetRankingBtnClicked = () => {
     closeModal("homeOptions");
-    // router.push("/");
+    openModal("petRanking");
+  };
+
+  const onInviteBtnClicked = () => {
+    closeModal("homeOptions");
+    openModal("invite");
   };
 
   const onQuitBtnClicked = () => {
@@ -70,6 +75,12 @@ const HomeOptions = () => {
           <OptionBtn
             text={"Pet Ranking"}
             onBtnClicked={() => onPetRankingBtnClicked()}
+          />
+        </div>
+        <div className="home-option" data-aos="fade-up" data-aos-delay="150">
+          <OptionBtn
+            text={"Invite Friends"}
+            onBtnClicked={() => onInviteBtnClicked()}
           />
         </div>
         <div className="home-option" data-aos="fade-up" data-aos-delay="200">
