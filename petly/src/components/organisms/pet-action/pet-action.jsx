@@ -8,9 +8,11 @@ import ActionTraining from "@/components/molecules/action-training/action-traini
 import { useEffect } from "react";
 import { initAOS } from "@/helper/aosHelper";
 import { useModalStore } from "@/ctx/store";
+import { useAuth } from "@/ctx/AuthContext";
 import "./pet-action.css";
 
 const PetAction = () => {
+  const { user } = useAuth();
   const isPetActionOpen = useModalStore((state) => state.modals.petAction);
   const closeModal = useModalStore((state) => state.closeModal);
 
@@ -43,7 +45,7 @@ const PetAction = () => {
           data-aos="zoom-in"
           data-aos-delay="50"
         >
-          <ActionHappiness />
+          <ActionHappiness userId={user.uid} />
         </section>
 
         <span className="hungriness-heading">
@@ -55,7 +57,7 @@ const PetAction = () => {
           data-aos="zoom-in"
           data-aos-delay="100"
         >
-          <ActionHungriness />
+          <ActionHungriness userId={user.uid} />
         </section>
 
         <span className="training-heading">
@@ -67,7 +69,7 @@ const PetAction = () => {
           data-aos="zoom-in"
           data-aos-delay="150"
         >
-          <ActionTraining />
+          <ActionTraining userId={user.uid} />
         </section>
       </div>
     </section>

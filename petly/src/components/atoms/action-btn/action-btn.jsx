@@ -1,9 +1,12 @@
 import Image from "next/image";
 import "./action-btn.css";
 
-const ActionBtn = ({ img_src, width, height, text, value, pt, bg, tx }) => {
+const ActionBtn = ({ img_src, width, height, text, value, pt, bg, tx, handleClick }) => {
   return (
-    <button className="action-btn">
+    <button
+      className="action-btn"
+      onClick={() => handleClick(value)}
+    >
       <Image
         src={img_src}
         alt=""
