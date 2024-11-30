@@ -69,16 +69,16 @@
   animation: progressAnimationHappiness 6s;
 }
 
-@keyframes progressAnimationHappiness {
+/* @keyframes progressAnimationHappiness {
   0% {
     width: 5%;
     background-color: #24b874;
   }
   100% {
-    width: 75%;
+    width: 100%;
     background-color: #24b874;
   }
-}
+} */
 
 .happiness {
   position: absolute;

@@ -69,16 +69,16 @@
   animation: progressAnimationHungriness 6s;
 }
 
-@keyframes progressAnimationHungriness {
+/* @keyframes progressAnimationHungriness {
   0% {
     width: 5%;
     background-color: #fbaa00;
   }
   100% {
-    width: 45%;
+    width: 100%;
     background-color: #fbaa00;
   }
-}
+} */
 
 .hungriness {
   position: absolute;

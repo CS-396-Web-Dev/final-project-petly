@@ -7,13 +7,15 @@ import PetHappiness from "@/components/molecules/pet-happiness/pet-happiness";
 import PetHungriness from "@/components/molecules/pet-hungriness/pet-hungriness";
 import PetTraining from "@/components/molecules/pet-training/pet-training";
 import { useModalStore } from "@/ctx/store";
+import { useAuth } from "@/ctx/AuthContext";
 import "./pet-profile.css";
 
 const PetProfile = () => {
+  const { user } = useAuth();
   const isPetProfileOpen = useModalStore((state) => state.modals.petProfile);
   const closeModal = useModalStore((state) => state.closeModal);
 
-  if (!isPetProfileOpen) return null;
+  if (!isPetProfileOpen || !user) return null;
 
   return (
     <section id="pet-profile-wrapper">
@@ -25,7 +27,7 @@ const PetProfile = () => {
         />
 
         <section className="pet-info-section">
-          <PetInfo />
+          <PetInfo userId={user.uid} />
         </section>
 
         <span className="level-heading">
@@ -33,7 +35,7 @@ const PetProfile = () => {
         </span>
 
         <section className="pet-level-section">
-          <PetLevel />
+          <PetLevel userId={user.uid} />
         </section>
 
         <span className="status-heading">
@@ -41,12 +43,12 @@ const PetProfile = () => {
         </span>
 
         <section className="pet-status-section">
-          <PetHappiness />
-          <PetHungriness />
-          <PetTraining />
+          <PetHappiness userId={user.uid} />
+          <PetHungriness userId={user.uid} />
+          <PetTraining userId={user.uid} />
         </section>
 
-        <p className="user-id">UID: 88bc0428-2c0a-48b1-953c-2e68ffa588d4</p>
+        <p className="user-id">UID: {user.uid}</p>
       </div>
     </section>
   );
