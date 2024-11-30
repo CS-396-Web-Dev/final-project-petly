@@ -15,7 +15,7 @@ const PetInfo = ({ userId }) => {
   const [petName, setPetName] = useState("Loading...");
 
   useEffect(() => {
-    const fetchPetType = async () => {
+    const fetchPetName = async () => {
       try {
         const db = getFirestore();
         const userDocRef = doc(db, "users", userId);
@@ -23,18 +23,18 @@ const PetInfo = ({ userId }) => {
 
         if (userDoc.exists()) {
           const userData = userDoc.data();
-          setPetName(userData.petType || "Unknown");
+          setPetName(userData.petName || "Unknown");
         } else {
           console.error("No such user document!");
           setPetName("Unknown");
         }
       } catch (error) {
-        console.error("Error fetching pet type:", error);
+        console.error("Error fetching pet name:", error);
         setPetName("Error");
       }
     };
 
-    fetchPetType();
+    fetchPetName();
   }, [userId]);
 
   useEffect(() => {
