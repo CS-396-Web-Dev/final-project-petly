@@ -1,6 +1,6 @@
 "use client";
 import BackModal from "@/components/atoms/back-modal/back-modal";
-import TextBtn from "@/components/atoms/text-btn/text-btn";
+import CloseBtn from "@/components/atoms/close-btn/close-btn";
 import RankTopThree from "@/components/molecules/rank-top-three-section/rank-top-three-section";
 import RankTopFive from "@/components/molecules/rank-top-five-section/rank-top-five-section";
 import { useModalStore } from "@/ctx/store";
@@ -16,7 +16,10 @@ const PetRanking = () => {
     <section id="pet-ranking-wrapper">
       <BackModal />
       <div id="pet-ranking">
-        <TextBtn text={"Close"} onBtnClicked={() => closeModal("petRanking")} />
+        <CloseBtn
+          text={"Close"}
+          onBtnClicked={() => closeModal("petRanking")}
+        />
 
         <span className="rank-heading">
           <p>Rank</p>

@@ -19,7 +19,10 @@ const PetProfile = () => {
     <section id="pet-profile-wrapper">
       <BackModal />
       <div id="pet-profile">
-        <CloseBtn text={"Close"} onBtnClicked={() => closeModal("petProfile")} />
+        <CloseBtn
+          text={"Close"}
+          onBtnClicked={() => closeModal("petProfile")}
+        />
 
         <section className="pet-info-section">
           <PetInfo />

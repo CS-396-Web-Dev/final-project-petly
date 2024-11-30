@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import BackModal from "@/components/atoms/back-modal/back-modal";
-import TextBtn from "@/components/atoms/text-btn/text-btn";
+import CloseBtn from "@/components/atoms/close-btn/close-btn";
 import { useModalStore } from "@/ctx/store";
 import Image from "next/image";
 import invite_img from "../../../../public/rank/invite_friend.svg";
@@ -13,7 +13,7 @@ const Invite = () => {
   const closeModal = useModalStore((state) => state.closeModal);
 
   const handleCopyLink = () => {
-    const inviteLink = "https://www.petly.com"; // should be the actual deployed links!
+    const inviteLink = "https://github.com/CS-396-Web-Dev/final-project-petly"; // should be the actual deployed links!
     navigator.clipboard.writeText(inviteLink).then(() => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
@@ -26,7 +26,7 @@ const Invite = () => {
     <section id="invite-wrapper">
       <BackModal />
       <div id="invite">
-        <TextBtn text={"Close"} onBtnClicked={() => closeModal("invite")} />
+        <CloseBtn text={"Close"} onBtnClicked={() => closeModal("invite")} />
         <Image
           src={invite_img}
           className="invite_img"
