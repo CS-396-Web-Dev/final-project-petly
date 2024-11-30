@@ -15,15 +15,34 @@ const ActionHappiness = ({ userId }) => {
       if (userDoc.exists()) {
         const userData = userDoc.data();
         const currentHappiness = userData.petHappiness || 0;
-        const updatedHappiness = Math.min(currentHappiness + value, 100);
+        const currentExp = userData.petExp || 0;
 
-        await updateDoc(userDocRef, { petHappiness: updatedHappiness });
-        console.log(`Updated petHappiness to ${updatedHappiness}`);
+        if (currentHappiness >= 100) {
+          console.log("Happiness is already at maximum. No updates made.");
+          return;
+        }
+
+        const updatedHappiness = Math.min(currentHappiness + value, 100);
+        var updatedExp = currentExp + value;
+        if (currentHappiness + value > 100)
+          updatedExp -= value - (100 - currentHappiness);
+
+        const updatedLevel = Math.floor(updatedExp / 1000) + 1;
+
+        await updateDoc(userDocRef, {
+          petHappiness: updatedHappiness,
+          petExp: updatedExp,
+          petLevel: updatedLevel,
+        });
+
+        console.log(
+          `Updated petHappiness to ${updatedHappiness}, petExp to ${updatedExp}, petLevel to ${updatedLevel}`
+        );
       } else {
         console.warn("User document not found!");
       }
     } catch (error) {
-      console.error("Error updating petHappiness:", error);
+      console.error("Error updating petHappiness and petExp:", error);
     }
   };
 

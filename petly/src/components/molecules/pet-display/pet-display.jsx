@@ -36,7 +36,7 @@ const PetDisplay = ({ userId }) => {
         return <Milktchi />;
       default:
         console.warn("Unknown pet type:", type);
-        return null;
+        return;
     }
   };
 

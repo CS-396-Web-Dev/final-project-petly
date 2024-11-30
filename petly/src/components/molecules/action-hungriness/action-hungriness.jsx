@@ -15,15 +15,36 @@ const ActionHungriness = ({ userId }) => {
       if (userDoc.exists()) {
         const userData = userDoc.data();
         const currentHungriness = userData.petHungriness || 0;
-        const updatedHungriness = Math.min(currentHungriness + value, 100);
+        const currentExp = userData.petExp || 0;
 
-        await updateDoc(userDocRef, { petHungriness: updatedHungriness });
-        console.log(`Updated petHungriness to ${updatedHungriness}`);
+        if (currentHungriness >= 100) {
+          console.log("Hungriness is already at maximum. No updates made.");
+          return;
+        }
+
+        const updatedHungriness = Math.min(currentHungriness + value, 100);
+        let updatedExp = currentExp + value;
+
+        if (currentHungriness + value > 100) {
+          updatedExp -= value - (100 - currentHungriness);
+        }
+
+        const updatedLevel = Math.floor(updatedExp / 1000) + 1;
+
+        await updateDoc(userDocRef, {
+          petHungriness: updatedHungriness,
+          petExp: updatedExp,
+          petLevel: updatedLevel,
+        });
+
+        console.log(
+          `Updated petHungriness to ${updatedHungriness}, petExp to ${updatedExp}, petLevel to ${updatedLevel}`
+        );
       } else {
         console.warn("User document not found!");
       }
     } catch (error) {
-      console.error("Error updating petHungriness:", error);
+      console.error("Error updating petHungriness and petExp:", error);
     }
   };
 

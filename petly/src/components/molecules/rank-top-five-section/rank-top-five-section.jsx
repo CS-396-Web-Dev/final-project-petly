@@ -23,7 +23,7 @@ const PetRankTopFive = () => {
         return milktchi;
       default:
         console.warn("Unknown pet type, defaulting to DoggChi:", petType);
-        return doggchi;
+        return;
     }
   };
 
@@ -37,14 +37,15 @@ const PetRankTopFive = () => {
         snapshot.forEach((doc) => {
           const data = doc.data();
           users.push({
-            petLevel: data.petLevel || 0,
+            petExp: data.petExp || 0,
+            petLevel: data.petLevel || 1,
             petName: data.petName || "N/A",
             petType: data.petType || "DOGGCHI",
           });
         });
 
         const sortedUsers = users
-          .sort((a, b) => b.petLevel - a.petLevel)
+          .sort((a, b) => b.petExp - a.petExp)
           .slice(0, 5);
 
         setTopFive(sortedUsers);

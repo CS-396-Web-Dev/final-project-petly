@@ -15,15 +15,35 @@ const ActionTraining = ({ userId }) => {
       if (userDoc.exists()) {
         const userData = userDoc.data();
         const currentTraining = userData.petTraining || 0;
-        const updatedTraining = Math.min(currentTraining + value, 100);
+        const currentExp = userData.petExp || 0;
 
-        await updateDoc(userDocRef, { petTraining: updatedTraining });
-        console.log(`Updated petTraining to ${updatedTraining}`);
+        if (currentTraining >= 100) {
+          console.log("Training is already at maximum. No updates made.");
+          return;
+        }
+
+        const updatedTraining = Math.min(currentTraining + value, 100);
+        let updatedExp = currentExp + value;
+
+        if (currentTraining + value > 100)
+          updatedExp -= value - (100 - currentTraining);
+
+        const updatedLevel = Math.floor(updatedExp / 1000) + 1;
+
+        await updateDoc(userDocRef, {
+          petTraining: updatedTraining,
+          petExp: updatedExp,
+          petLevel: updatedLevel,
+        });
+
+        console.log(
+          `Updated petTraining to ${updatedTraining}, petExp to ${updatedExp}, petLevel to ${updatedLevel}`
+        );
       } else {
         console.warn("User document not found!");
       }
     } catch (error) {
-      console.error("Error updating petTraining:", error);
+      console.error("Error updating petTraining and petExp:", error);
     }
   };
 
