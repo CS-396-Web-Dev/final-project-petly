@@ -3,10 +3,29 @@ import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import RankTopFive from "@/components/atoms/rank-top-five-item/rank-top-five-item";
-import pet_info_shadow_img from "../../../../public/sprite_sheet/pet_info_shadow.png";
+import doggchi from "../../../../public/new-user/doggchi.gif";
+import lovelitchi from "../../../../public/new-user/lovelitchi.gif";
+import mametchi from "../../../../public/new-user/mametchi.gif";
+import milktchi from "../../../../public/new-user/milktchi.gif";
 
 const PetRankTopFive = () => {
   const [topFive, setTopFive] = useState([]);
+
+  const getPetComponent = (petType) => {
+    switch (petType) {
+      case "DOGGCHI":
+        return doggchi;
+      case "LOVELITCHI":
+        return lovelitchi;
+      case "MAMETCHI":
+        return mametchi;
+      case "MILKTCHI":
+        return milktchi;
+      default:
+        console.warn("Unknown pet type, defaulting to DoggChi:", petType);
+        return doggchi;
+    }
+  };
 
   useEffect(() => {
     const fetchRanking = async () => {
@@ -20,6 +39,7 @@ const PetRankTopFive = () => {
           users.push({
             petLevel: data.petLevel || 0,
             petName: data.petName || "N/A",
+            petType: data.petType || "DOGGCHI",
           });
         });
 
@@ -46,7 +66,7 @@ const PetRankTopFive = () => {
         <RankTopFive
           key={index}
           rank={index + 1}
-          petShadowSrc={pet_info_shadow_img}
+          petShadowSrc={getPetComponent(user.petType)}
           petName={user.petName}
           level={user.petLevel}
         />

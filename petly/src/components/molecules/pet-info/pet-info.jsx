@@ -3,7 +3,10 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import pet_info_shadow_img from "../../../../public/sprite_sheet/pet_info_shadow.png";
+import doggchi_sprite_sheet from "../../../../public/sprite_sheet/doggchi_sprite_sheet.png";
+import lovelitchi_sprite_sheet from "../../../../public/sprite_sheet/lovelitchi_sprite_sheet.png";
 import mametchi_sprite_sheet from "../../../../public/sprite_sheet/mametchi_sprite_sheet.png";
+import milktchi_sprite_sheet from "../../../../public/sprite_sheet/milktchi_sprite_sheet.png";
 import "./pet-info.css";
 
 const PetInfo = ({ userId }) => {
@@ -13,9 +16,10 @@ const PetInfo = ({ userId }) => {
 
   const [spritePosition, setSpritePosition] = useState({ x: 0, y: 0 });
   const [petName, setPetName] = useState("Loading...");
+  const [spriteSheet, setSpriteSheet] = useState(null);
 
   useEffect(() => {
-    const fetchPetName = async () => {
+    const fetchPetInfo = async () => {
       try {
         const db = getFirestore();
         const userDocRef = doc(db, "users", userId);
@@ -24,17 +28,36 @@ const PetInfo = ({ userId }) => {
         if (userDoc.exists()) {
           const userData = userDoc.data();
           setPetName(userData.petName || "Unknown");
+
+          switch (userData.petType) {
+            case "DOGGCHI":
+              setSpriteSheet(doggchi_sprite_sheet);
+              break;
+            case "LOVELITCHI":
+              setSpriteSheet(lovelitchi_sprite_sheet);
+              break;
+            case "MAMETCHI":
+              setSpriteSheet(mametchi_sprite_sheet);
+              break;
+            case "MILKTCHI":
+              setSpriteSheet(milktchi_sprite_sheet);
+              break;
+            default:
+              console.error("Unknown pet type:", userData.petType);
+              setSpriteSheet(null);
+              break;
+          }
         } else {
           console.error("No such user document!");
           setPetName("Unknown");
         }
       } catch (error) {
-        console.error("Error fetching pet name:", error);
+        console.error("Error fetching pet info:", error);
         setPetName("Error");
       }
     };
 
-    fetchPetName();
+    fetchPetInfo();
   }, [userId]);
 
   useEffect(() => {
@@ -46,13 +69,15 @@ const PetInfo = ({ userId }) => {
 
   return (
     <>
-      <div
-        className="pet-image"
-        style={{
-          backgroundImage: `url(${mametchi_sprite_sheet.src})`,
-          backgroundPosition: `${spritePosition.x}px ${spritePosition.y}px`,
-        }}
-      ></div>
+      {spriteSheet && (
+        <div
+          className="pet-image"
+          style={{
+            backgroundImage: `url(${spriteSheet.src})`,
+            backgroundPosition: `${spritePosition.x}px ${spritePosition.y}px`,
+          }}
+        ></div>
+      )}
 
       <Image
         className="pet-shadow"
