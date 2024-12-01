@@ -61,20 +61,20 @@ export default function Login() {
             <form className="w-full max-w-[340px] space-y-6" onSubmit={handleSubmit}>
               <div className="space-y-4">
                 <div className="relative">
-                  <input
-                    type="email"
-                    required
-                    className="w-full px-5 py-4 rounded-xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-purple-500 transition-all duration-200 outline-none font-['Inter'] text-sm placeholder:text-gray-400"
-                    placeholder="Email address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                <input
+                  type="email"
+                  required
+                  className="w-full px-5 py-4 rounded-xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-purple-500 transition-all duration-200 outline-none font-['Inter'] text-sm placeholder:text-gray-400 text-gray-900"
+                  placeholder="Email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
                 </div>
                 <div className="relative">
                   <input
                     type="password"
                     required
-                    className="w-full px-5 py-4 rounded-xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-purple-500 transition-all duration-200 outline-none font-['Inter'] text-sm placeholder:text-gray-400"
+                    className="w-full px-5 py-4 rounded-xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-purple-500 transition-all duration-200 outline-none font-['Inter'] text-sm placeholder:text-gray-400 text-gray-900"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}

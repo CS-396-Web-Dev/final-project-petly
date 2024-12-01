@@ -61,7 +61,7 @@ export default function Signup() {
                   <input
                     type="email"
                     required
-                    className="w-full px-5 py-4 rounded-xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-purple-500 transition-all duration-200 outline-none font-['Inter'] text-sm placeholder:text-gray-400"
+                    className="w-full px-5 py-4 rounded-xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-purple-500 transition-all duration-200 outline-none font-['Inter'] text-sm placeholder:text-gray-400 text-gray-900"
                     placeholder="Email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -71,7 +71,7 @@ export default function Signup() {
                   <input
                     type="password"
                     required
-                    className="w-full px-5 py-4 rounded-xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-purple-500 transition-all duration-200 outline-none font-['Inter'] text-sm placeholder:text-gray-400"
+                    className="w-full px-5 py-4 rounded-xl border-2 border-gray-100 bg-gray-50 focus:bg-white focus:border-purple-500 transition-all duration-200 outline-none font-['Inter'] text-sm placeholder:text-gray-400 text-gray-900"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
