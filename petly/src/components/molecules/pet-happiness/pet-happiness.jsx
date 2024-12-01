@@ -10,6 +10,7 @@ const PetHappiness = ({ userId }) => {
   const [maxHappiness, setMaxHappiness] = useState(100);
   const [progressBarWidth, setProgressBarWidth] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState("#24b874");
+  const [condition, setCondition] = useState("Good Condition");
 
   useEffect(() => {
     const fetchPetHappiness = async () => {
@@ -31,20 +32,14 @@ const PetHappiness = ({ userId }) => {
 
           if (happiness < 20) {
             setBackgroundColor("red");
+            setCondition("Poor Condition");
           } else if (happiness < 80) {
             setBackgroundColor("#fbaa00");
+            setCondition("Normal Condition");
           } else {
             setBackgroundColor("#24b874");
+            setCondition("Good Condition");
           }
-
-          console.log(
-            "Fetched petHappiness:",
-            happiness,
-            "Progress:",
-            progress,
-            "BackgroundColor:",
-            backgroundColor
-          );
         } else {
           console.error("No such user document!");
         }
@@ -95,7 +90,7 @@ const PetHappiness = ({ userId }) => {
     <>
       <p className="pet-happiness-text">Happiness</p>
       <p className="pet-happiness-subtext">
-        Good Condition: <span className="pet-happiness-sp1">{petHappiness}</span>
+        {condition}: <span className="pet-happiness-sp1">{petHappiness}</span>
         <span className="pet-happiness-sp2">/{maxHappiness}</span>
       </p>
 

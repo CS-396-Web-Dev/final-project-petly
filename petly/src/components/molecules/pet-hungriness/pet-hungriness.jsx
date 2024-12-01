@@ -10,6 +10,7 @@ const PetHungriness = ({ userId }) => {
   const [maxHungriness, setMaxHungriness] = useState(100);
   const [progressBarWidth, setProgressBarWidth] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState("#24b874");
+  const [condition, setCondition] = useState("Normal Condition");
 
   useEffect(() => {
     const fetchPetHungriness = async () => {
@@ -31,18 +32,14 @@ const PetHungriness = ({ userId }) => {
 
           if (hungriness < 20) {
             setBackgroundColor("red");
+            setCondition("Poor Condition");
           } else if (hungriness < 80) {
             setBackgroundColor("#fbaa00");
+            setCondition("Normal Condition");
           } else {
             setBackgroundColor("#24b874");
+            setCondition("Good Condition");
           }
-
-          console.log(
-            "Fetched petHungriness:",
-            hungriness,
-            "Progress:",
-            progress
-          );
         } else {
           console.error("No such user document!");
         }
@@ -93,7 +90,7 @@ const PetHungriness = ({ userId }) => {
     <>
       <p className="pet-hungriness-text">Hungriness</p>
       <p className="pet-hungriness-subtext">
-        Normal Condition:{" "}
+        {condition}:{" "}
         <span className="pet-hungriness-sp1">{petHungriness}</span>
         <span className="pet-hungriness-sp2">/{maxHungriness}</span>
       </p>
