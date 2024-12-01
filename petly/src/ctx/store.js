@@ -95,6 +95,7 @@ export const usePetStore = create(
         petStage: StageType.HATCH,
         petExp: 0,
         petLevel: 1,
+        lastUpdated: Date.now(),
 
         initPet: (petName, petType) =>
           set(() => ({
@@ -105,6 +106,7 @@ export const usePetStore = create(
             petHappiness: 0,
             petHungriness: 0,
             petTraining: 0,
+            lastUpdated: Date.now(),
           })),
 
         evolve: () =>
@@ -138,6 +140,7 @@ export const usePetStore = create(
             set(() => data);
           }
         },
+
         setPetDetails: (data) =>
           set(() => ({
             ...data,
@@ -159,6 +162,44 @@ export const usePetStore = create(
           const petData = get();
           const docRef = doc(db, "users", uid);
           await setDoc(docRef, petData, { merge: true });
+        },
+
+        decreaseAttributes: async (uid) => {
+          const state = get();
+          const now = Date.now();
+          const timeElapsed = Math.floor((now - state.lastUpdated) / 60000);
+
+          if (timeElapsed >= 10) {
+            const decreaseAmount = Math.floor(timeElapsed / 10) * 8;
+
+            const updatedHappiness = Math.max(
+              state.petHappiness - decreaseAmount,
+              0
+            );
+            const updatedHungriness = Math.max(
+              state.petHungriness - decreaseAmount,
+              0
+            );
+            const updatedTraining = Math.max(
+              state.petTraining - decreaseAmount,
+              0
+            );
+
+            set({
+              petHappiness: updatedHappiness,
+              petHungriness: updatedHungriness,
+              petTraining: updatedTraining,
+              lastUpdated: now,
+            });
+
+            const docRef = doc(db, "users", uid);
+            await updateDoc(docRef, {
+              petHappiness: updatedHappiness,
+              petHungriness: updatedHungriness,
+              petTraining: updatedTraining,
+              lastUpdated: now,
+            });
+          }
         },
       }),
       {

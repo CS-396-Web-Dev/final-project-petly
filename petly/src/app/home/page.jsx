@@ -7,6 +7,7 @@ import PetProfile from "@/components/organisms/pet-profile/pet-profile";
 import PetAction from "@/components/organisms/pet-action/pet-action";
 import PetRanking from "@/components/organisms/pet-ranking/pet-ranking";
 import Invite from "@/components/organisms/invite/invite";
+import PetAttributeMonitor from "@/components/molecules/pet-attribute-monitor/pet-attribute-monitor";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <PetAction />
       <PetRanking />
       <Invite />
+      <PetAttributeMonitor />
     </MobileContainer>
   );
 }
