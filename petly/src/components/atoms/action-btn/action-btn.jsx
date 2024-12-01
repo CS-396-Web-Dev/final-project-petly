@@ -1,11 +1,28 @@
 import Image from "next/image";
+import { useModalStore } from "@/ctx/store";
 import "./action-btn.css";
 
-const ActionBtn = ({ img_src, width, height, text, value, pt, bg, tx, handleClick, disabled }) => {
+const ActionBtn = ({
+  img_src,
+  width,
+  height,
+  text,
+  value,
+  pt,
+  bg,
+  tx,
+  handleClick,
+  disabled,
+}) => {
+  const openModal = useModalStore((state) => state.openModal);
+
   return (
     <button
       className="action-btn"
-      onClick={() => handleClick(value)}
+      onClick={() => {
+        handleClick(value);
+        openModal("petProfile");
+      }}
       disabled={disabled}
     >
       <Image
