@@ -19,10 +19,10 @@ const ActionTraining = ({ userId }) => {
     }
 
     if (actionName === "dumbell")
-      setAnimationState(AnimationState.ANIMATION_WITH_DUMBELL);
+      setAnimationState(AnimationState.ANIMATION_WITH_DUMBELL, 6000);
     else if (actionName === "football")
-      setAnimationState(AnimationState.ANIMATION_WITH_FOOTBALL);
-    else setAnimationState(AnimationState.ANIMATION_WITH_TENNIS);
+      setAnimationState(AnimationState.ANIMATION_WITH_FOOTBALL, 6000);
+    else setAnimationState(AnimationState.ANIMATION_WITH_TENNIS, 6000);
 
     setTimeout(() => {
       setAnimationState(AnimationState.REGULAR);

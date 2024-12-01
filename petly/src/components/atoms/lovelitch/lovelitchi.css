@@ -1,68 +1,189 @@
 :root {
-    --pixel-size: 6;
+  --pixel-size: 6;
+}
+
+#lovelitchi {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lovelitchi-wrapper {
+  width: calc(32px * var(--pixel-size));
+  height: calc(32px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: 4em auto;
+}
+
+.lovelitchi-spritesheet {
+  display: block;
+  position: absolute;
+  width: calc(352px * var(--pixel-size));
+  max-width: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.pixel-shadow {
+  position: absolute;
+  bottom: 4rem;
+  width: calc(32px * var(--pixel-size));
+  height: calc(32px * var(--pixel-size));
+  z-index: -1;
+}
+
+.pixel-art {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.lovelitchi-regular {
+  top: calc(0 * -32px * var(--pixel-size));
+  animation: lovelitchiRegular 2s steps(3) infinite;
+}
+
+@keyframes lovelitchiRegular {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  
-  #lovelitchi {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  to {
+    transform: translate3d(calc(-32px * 3 * var(--pixel-size)), 0, 0);
   }
-  
-  .lovelitchi-wrapper {
-    width: calc(32px * var(--pixel-size));
-    height: calc(32px * var(--pixel-size));
-    overflow: hidden;
-    position: relative;
-    margin: 4em auto;
+}
+
+.lovelitchi-animation-with-gift {
+  top: calc(6 * -32px * var(--pixel-size));
+  left: calc(1 * -32px * var(--pixel-size));
+  animation: lovelitchiWithGift 1s steps(2) infinite !important;
+}
+
+@keyframes lovelitchiWithGift {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  
-  .lovelitchi-spritesheet {
-    display: block;
-    position: absolute;
-    width: calc(352px * var(--pixel-size));
-    max-width: none;
-    animation: regularSpriteSheet 2s steps(11) infinite;
-    background-repeat: no-repeat;
-    background-size: cover;
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
   }
-  
-  .pixel-shadow {
-    position: absolute;
-    bottom: 4rem;
-    width: calc(32px * var(--pixel-size));
-    height: calc(32px * var(--pixel-size));
-    z-index: -1;
+}
+
+.lovelitchi-animation-with-music {
+  left: calc(9 * -32px * var(--pixel-size));
+  animation: lovelitchiWithMusic 1s steps(2) infinite !important;
+}
+
+@keyframes lovelitchiWithMusic {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  
-  .pixel-art {
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
   }
-  
-  .sad {
-    top: calc(-32px * var(--pixel-size));
-    left: calc(4 * -32px * var(--pixel-size));
-    animation: sadSpritesheet 2s steps(6) infinite !important;
+}
+
+.lovelitchi-animation-with-game {
+  top: calc(5 * -32px * var(--pixel-size));
+  left: calc(6 * -32px * var(--pixel-size));
+  animation: lovelitchiWithGame 1.5s steps(3) infinite !important;
+}
+
+@keyframes lovelitchiWithGame {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  
-  @keyframes regularSpriteSheet {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(calc(-100%), 0, 0);
-    }
+  to {
+    transform: translate3d(calc(-32px * 3 * var(--pixel-size)), 0, 0);
   }
-  
-  @keyframes sadSpritesheet {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(calc(-32px * 6 * var(--pixel-size)), 0, 0);
-    }
+}
+
+.lovelitchi-animation-with-cookie {
+  top: calc(4 * -32px * var(--pixel-size));
+  animation: lovelitchiWithCookie 1.5s steps(4) infinite !important;
+}
+
+@keyframes lovelitchiWithCookie {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  
+  to {
+    transform: translate3d(calc(-32px * 4 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.lovelitchi-animation-with-pie {
+  top: calc(6 * -32px * var(--pixel-size));
+  left: calc(3 * -32px * var(--pixel-size));
+  animation: lovelitchiWithPie 1.5s steps(4) infinite !important;
+}
+
+@keyframes lovelitchiWithPie {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 4 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.lovelitchi-animation-with-chicken {
+  top: calc(9 * -32px * var(--pixel-size));
+  left: calc(5 * -32px * var(--pixel-size));
+  animation: lovelitchiWithChicken 1s steps(2) infinite !important;
+}
+
+@keyframes lovelitchiWithChicken {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.lovelitchi-animation-with-dumbell {
+  top: calc(3 * -32px * var(--pixel-size));
+  left: calc(5 * -32px * var(--pixel-size));
+  animation: lovelitchiWithDumbell 1.5s steps(4) infinite !important;
+}
+
+@keyframes lovelitchiWithDumbell {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 4 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.lovelitchi-animation-with-football {
+  top: calc(7 * -32px * var(--pixel-size));
+  left: calc(5 * -32px * var(--pixel-size));
+  animation: lovelitchiWithFootball 2.5s steps(6) infinite !important;
+}
+
+@keyframes lovelitchiWithFootball {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 6 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.lovelitchi-animation-with-tennis {
+  top: calc(8 * -32px * var(--pixel-size));
+  left: calc(1 * -32px * var(--pixel-size));
+  animation: lovelitchiWithTennis 2s steps(2) infinite !important;
+}
+
+@keyframes lovelitchiWithTennis {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
+  }
+}

@@ -98,11 +98,26 @@ export const usePetStore = create(
         petLevel: 1,
         lastUpdated: Date.now(),
         animationState: AnimationState.REGULAR,
+        timeoutId: null,
 
-        setAnimationState: (state) =>
-          set(() => ({
-            animationState: state,
-          })),
+        setAnimationState: (state, duration = 0) =>
+          set((current) => {
+            if (current.timeoutId) {
+              clearTimeout(current.timeoutId);
+            }
+
+            let timeoutId = null;
+            if (duration > 0) {
+              timeoutId = setTimeout(() => {
+                set({
+                  animationState: AnimationState.REGULAR,
+                  timeoutId: null,
+                });
+              }, duration);
+            }
+
+            return { animationState: state, timeoutId };
+          }),
 
         initPet: (petName, petType) =>
           set(() => ({

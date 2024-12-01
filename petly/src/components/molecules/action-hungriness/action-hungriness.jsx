@@ -23,14 +23,10 @@ const ActionHungriness = ({ userId }) => {
     }
 
     if (actionName === "cookie")
-      setAnimationState(AnimationState.ANIMATION_WITH_COOKIE);
+      setAnimationState(AnimationState.ANIMATION_WITH_COOKIE, 6000);
     else if (actionName === "pie")
-      setAnimationState(AnimationState.ANIMATION_WITH_PIE);
-    else setAnimationState(AnimationState.ANIMATION_WITH_CHICKEN);
-
-    setTimeout(() => {
-      setAnimationState(AnimationState.REGULAR);
-    }, 6000);
+      setAnimationState(AnimationState.ANIMATION_WITH_PIE, 6000);
+    else setAnimationState(AnimationState.ANIMATION_WITH_CHICKEN, 6000);
 
     try {
       const db = getFirestore();

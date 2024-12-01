@@ -18,15 +18,13 @@ const ActionHappiness = ({ userId }) => {
       return;
     }
 
-    if (actionName === "gift")
-      setAnimationState(AnimationState.ANIMATION_WITH_GIFT);
-    else if (actionName === "music")
-      setAnimationState(AnimationState.ANIMATION_WITH_MUSIC);
-    else setAnimationState(AnimationState.ANIMATION_WITH_GAME);
-
-    setTimeout(() => {
-      setAnimationState(AnimationState.REGULAR);
-    }, 6000);
+    if (actionName === "gift") {
+      setAnimationState(AnimationState.ANIMATION_WITH_GIFT, 6000);
+    } else if (actionName === "music") {
+      setAnimationState(AnimationState.ANIMATION_WITH_MUSIC, 6000);
+    } else {
+      setAnimationState(AnimationState.ANIMATION_WITH_GAME, 6000);
+    }
 
     try {
       const db = getFirestore();
