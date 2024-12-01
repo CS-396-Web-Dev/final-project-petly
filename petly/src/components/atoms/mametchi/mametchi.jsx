@@ -1,14 +1,18 @@
+"use client";
 import Image from "next/image";
 import pet_shadow_img from "../../../../public/sprite_sheet/pet_shadow.png";
 import mametchi_sprite_sheet from "../../../../public/sprite_sheet/mametchi_sprite_sheet.png";
+import { usePetStore } from "@/ctx/store";
 import "./mametchi.css";
 
 const Mametchi = () => {
+  const animationState = usePetStore((state) => state.animationState);
+
   return (
     <section id="mametchi">
       <div className="mametchi-wrapper">
         <Image
-          className="mametchi-spritesheet pixel-art"
+          className={`mametchi-spritesheet pixel-art ${animationState}`}
           src={mametchi_sprite_sheet}
           alt=""
           width={320}

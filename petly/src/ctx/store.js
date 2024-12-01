@@ -3,6 +3,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import { StageType } from "@/helper/type";
 import { db } from "@/firebase/config";
 import { doc, updateDoc, getDoc, setDoc } from "firebase/firestore";
+import { AnimationState } from "@/helper/type";
 
 const logger = (config) => (set, get, api) =>
   config(
@@ -96,6 +97,12 @@ export const usePetStore = create(
         petExp: 0,
         petLevel: 1,
         lastUpdated: Date.now(),
+        animationState: AnimationState.REGULAR,
+
+        setAnimationState: (state) =>
+          set(() => ({
+            animationState: state,
+          })),
 
         initPet: (petName, petType) =>
           set(() => ({

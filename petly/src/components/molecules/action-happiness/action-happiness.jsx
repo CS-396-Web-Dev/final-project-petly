@@ -4,9 +4,11 @@ import gift_img from "../../../../public/action/gift.svg";
 import music_img from "../../../../public/action/music.svg";
 import game_img from "../../../../public/action/game.svg";
 import ActionBtn from "@/components/atoms/action-btn/action-btn";
-import { useActionStore, useModalStore } from "@/ctx/store";
+import { useActionStore, useModalStore, usePetStore } from "@/ctx/store";
+import { AnimationState } from "@/helper/type";
 
 const ActionHappiness = ({ userId }) => {
+  const { setAnimationState } = usePetStore();
   const { setActionCooldown, isActionAvailable } = useActionStore();
   const closeModal = useModalStore((state) => state.closeModal);
 
@@ -32,6 +34,8 @@ const ActionHappiness = ({ userId }) => {
           closeModal("petAction");
           return;
         }
+
+        setAnimationState(AnimationState.SAD);
 
         const updatedHappiness = Math.min(currentHappiness + value, 100);
 
@@ -63,6 +67,11 @@ const ActionHappiness = ({ userId }) => {
         );
 
         setActionCooldown(actionName, cooldownDuration);
+
+        setTimeout(() => {
+          setAnimationState(AnimationState.REGULAR);
+        }, 2000);
+
         closeModal("petAction");
       } else {
         console.warn("User document not found!");

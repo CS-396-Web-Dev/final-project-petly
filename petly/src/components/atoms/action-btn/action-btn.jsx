@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useModalStore } from "@/ctx/store";
 import "./action-btn.css";
 
 const ActionBtn = ({
@@ -14,14 +13,11 @@ const ActionBtn = ({
   handleClick,
   disabled,
 }) => {
-  const openModal = useModalStore((state) => state.openModal);
-
   return (
     <button
       className="action-btn"
       onClick={() => {
         handleClick(value);
-        openModal("petProfile");
       }}
       disabled={disabled}
     >

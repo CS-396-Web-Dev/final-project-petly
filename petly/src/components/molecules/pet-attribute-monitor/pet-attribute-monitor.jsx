@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { usePetStore } from "@/ctx/store";
 import { useAuth } from "@/ctx/AuthContext";
 
-const PetAttributeMonitor = ({ userId }) => {
+const PetAttributeMonitor = () => {
   const { user } = useAuth();
   const decreaseAttributes = usePetStore((state) => state.decreaseAttributes);
 
