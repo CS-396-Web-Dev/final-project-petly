@@ -1,14 +1,18 @@
+"use client";
 import Image from "next/image";
 import pet_shadow_img from "../../../../public/sprite_sheet/pet_shadow.png";
 import doggchi_sprite_sheet from "../../../../public/sprite_sheet/doggchi_sprite_sheet.png";
+import { usePetStore } from "@/ctx/store";
 import "./doggchi.css";
 
 const DoggChi = () => {
+  const animationState = usePetStore((state) => state.animationState);
+
   return (
     <section id="doggchi">
       <div className="doggchi-wrapper">
         <Image
-          className="doggchi-spritesheet pixel-art"
+          className={`doggchi-spritesheet pixel-art doggchi-${animationState}`}
           src={doggchi_sprite_sheet}
           alt=""
           width={320}

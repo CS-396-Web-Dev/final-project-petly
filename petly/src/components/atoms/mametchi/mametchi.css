@@ -43,10 +43,10 @@
 
 .mametchi-regular {
   top: calc(0 * -32px * var(--pixel-size));
-  animation: regular 2s steps(2) infinite;
+  animation: mametchiRegular 2s steps(2) infinite;
 }
 
-@keyframes regular {
+@keyframes mametchiRegular {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -73,7 +73,7 @@
 .mametchi-animation-with-gift {
   top: calc(5 * -32px * var(--pixel-size));
   left: calc(1 * -32px * var(--pixel-size));
-  animation: mametchiWithMusic 1s steps(2) infinite !important;
+  animation: mametchiWithGift 1s steps(2) infinite !important;
 }
 
 @keyframes mametchiWithGift {
@@ -190,7 +190,7 @@
 }
 
 .mametchi-animation-with-tennis {
-  top: calc(3 * -32px * var(--pixel-size));
+  top: calc(2 * -32px * var(--pixel-size));
   left: calc(5 * -32px * var(--pixel-size));
   animation: mametchiWithTennis 2s steps(5) infinite !important;
 }

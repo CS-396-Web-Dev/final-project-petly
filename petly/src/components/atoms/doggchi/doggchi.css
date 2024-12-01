@@ -1,68 +1,186 @@
 :root {
-    --pixel-size: 6;
+  --pixel-size: 6;
+}
+
+#doggchi {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.doggchi-wrapper {
+  width: calc(32px * var(--pixel-size));
+  height: calc(32px * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: 4em auto;
+}
+
+.doggchi-spritesheet {
+  display: block;
+  position: absolute;
+  width: calc(352px * var(--pixel-size));
+  max-width: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.pixel-shadow {
+  position: absolute;
+  bottom: 4rem;
+  width: calc(32px * var(--pixel-size));
+  height: calc(32px * var(--pixel-size));
+  z-index: -1;
+}
+
+.pixel-art {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.doggchi-regular {
+  top: calc(0 * -32px * var(--pixel-size));
+  animation: doggchiRegular 2s steps(2) infinite;
+}
+
+@keyframes doggchiRegular {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  
-  #doggchi {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
   }
-  
-  .doggchi-wrapper {
-    width: calc(32px * var(--pixel-size));
-    height: calc(32px * var(--pixel-size));
-    overflow: hidden;
-    position: relative;
-    margin: 4em auto;
+}
+
+.doggchi-animation-with-gift {
+  left: calc(3 * -32px * var(--pixel-size));
+  animation: doggchiWithGift 1s steps(2) infinite !important;
+}
+
+@keyframes doggchiWithGift {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  
-  .doggchi-spritesheet {
-    display: block;
-    position: absolute;
-    width: calc(352px * var(--pixel-size));
-    max-width: none;
-    animation: regularSpriteSheet 2s steps(11) infinite;
-    background-repeat: no-repeat;
-    background-size: cover;
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
   }
-  
-  .pixel-shadow {
-    position: absolute;
-    bottom: 4rem;
-    width: calc(32px * var(--pixel-size));
-    height: calc(32px * var(--pixel-size));
-    z-index: -1;
+}
+
+.doggchi-animation-with-music {
+  top: calc(1 * -32px * var(--pixel-size));
+  animation: doggchiWithMusic 1s steps(2) infinite !important;
+}
+
+@keyframes doggchiWithMusic {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  
-  .pixel-art {
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
   }
-  
-  .sad {
-    top: calc(-32px * var(--pixel-size));
-    left: calc(4 * -32px * var(--pixel-size));
-    animation: sadSpritesheet 2s steps(6) infinite !important;
+}
+
+.doggchi-animation-with-game {
+  left: calc(5 * -32px * var(--pixel-size));
+  animation: doggchiWithGame 1.5s steps(4) infinite !important;
+}
+
+@keyframes doggchiWithGame {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  
-  @keyframes regularSpriteSheet {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(calc(-100%), 0, 0);
-    }
+  to {
+    transform: translate3d(calc(-32px * 4 * var(--pixel-size)), 0, 0);
   }
-  
-  @keyframes sadSpritesheet {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(calc(-32px * 6 * var(--pixel-size)), 0, 0);
-    }
+}
+
+.doggchi-animation-with-cookie {
+  top: calc(3 * -32px * var(--pixel-size));
+  left: calc(9 * -32px * var(--pixel-size));
+  animation: doggchiWithCookie 1s steps(2) infinite !important;
+}
+
+@keyframes doggchiWithCookie {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.doggchi-animation-with-pie {
+  top: calc(4 * -32px * var(--pixel-size));
+  animation: doggchiWithPie 1s steps(2) infinite !important;
+}
+
+@keyframes doggchiWithPie {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.doggchi-animation-with-chicken {
+  top: calc(6 * -32px * var(--pixel-size));
+  left: calc(3 * -32px * var(--pixel-size));
+  animation: doggchiWithChicken 1s steps(4) infinite !important;
+}
+
+@keyframes doggchiWithChicken {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 4 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.doggchi-animation-with-dumbell {
+  top: calc(3 * -32px * var(--pixel-size));
+  left: calc(5 * -32px * var(--pixel-size));
+  animation: doggchiWithDumbell 1.5s steps(4) infinite !important;
+}
+
+@keyframes doggchiWithDumbell {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 4 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.doggchi-animation-with-football {
+  top: calc(7 * -32px * var(--pixel-size));
+  left: calc(5 * -32px * var(--pixel-size));
+  animation: doggchiWithFootball 1s steps(3) infinite !important;
+}
+
+@keyframes doggchiWithFootball {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 3 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.doggchi-animation-with-tennis {
+  top: calc(3 * -32px * var(--pixel-size));
+  animation: doggchiWithTennis 2s steps(3) infinite !important;
+}
+
+@keyframes doggchiWithTennis {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 3 * var(--pixel-size)), 0, 0);
+  }
+}
