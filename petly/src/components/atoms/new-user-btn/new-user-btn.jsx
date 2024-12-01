@@ -32,9 +32,9 @@ const NewUserBtn = ({ petName, petType, initPet }) => {
     const defaultPetData = {
       petName,
       petType: finalPetType,
-      petHappiness: 0,
-      petHungriness: 0,
-      petTraining: 0,
+      petHappiness: 50,
+      petHungriness: 50,
+      petTraining: 50,
       petStage: "HATCH",
       petExp: 0,
       petLevel: 1,

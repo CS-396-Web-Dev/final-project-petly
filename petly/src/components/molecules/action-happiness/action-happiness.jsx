@@ -18,6 +18,16 @@ const ActionHappiness = ({ userId }) => {
       return;
     }
 
+    if (actionName === "gift")
+      setAnimationState(AnimationState.ANIMATION_WITH_GIFT);
+    else if (actionName === "music")
+      setAnimationState(AnimationState.ANIMATION_WITH_MUSIC);
+    else setAnimationState(AnimationState.ANIMATION_WITH_GAME);
+
+    setTimeout(() => {
+      setAnimationState(AnimationState.REGULAR);
+    }, 6000);
+
     try {
       const db = getFirestore();
       const userDocRef = doc(db, "users", userId);
@@ -34,8 +44,6 @@ const ActionHappiness = ({ userId }) => {
           closeModal("petAction");
           return;
         }
-
-        setAnimationState(AnimationState.SAD);
 
         const updatedHappiness = Math.min(currentHappiness + value, 100);
 
@@ -67,10 +75,6 @@ const ActionHappiness = ({ userId }) => {
         );
 
         setActionCooldown(actionName, cooldownDuration);
-
-        setTimeout(() => {
-          setAnimationState(AnimationState.REGULAR);
-        }, 2000);
 
         closeModal("petAction");
       } else {

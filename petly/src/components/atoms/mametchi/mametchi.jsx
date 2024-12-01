@@ -12,7 +12,7 @@ const Mametchi = () => {
     <section id="mametchi">
       <div className="mametchi-wrapper">
         <Image
-          className={`mametchi-spritesheet pixel-art ${animationState}`}
+          className={`mametchi-spritesheet pixel-art mametchi-${animationState}`}
           src={mametchi_sprite_sheet}
           alt=""
           width={320}

@@ -90,9 +90,9 @@ export const usePetStore = create(
       (set, get) => ({
         petName: "",
         petType: "",
-        petHappiness: 0,
-        petHungriness: 0,
-        petTraining: 0,
+        petHappiness: 50,
+        petHungriness: 50,
+        petTraining: 50,
         petStage: StageType.HATCH,
         petExp: 0,
         petLevel: 1,
@@ -110,10 +110,11 @@ export const usePetStore = create(
             petType,
             petStage: StageType.HATCH,
             petLevel: 1,
-            petHappiness: 0,
-            petHungriness: 0,
-            petTraining: 0,
+            petHappiness: 50,
+            petHungriness: 50,
+            petTraining: 50,
             lastUpdated: Date.now(),
+            animationState: AnimationState.REGULAR,
           })),
 
         evolve: () =>

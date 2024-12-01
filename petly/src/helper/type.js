@@ -16,4 +16,13 @@ export const AnimationState = {
   HAPPY: "happy",
   ANGRY: "angry",
   SLEEPING: "sleeping",
+  ANIMATION_WITH_GIFT: "animation-with-gift",
+  ANIMATION_WITH_MUSIC: "animation-with-music",
+  ANIMATION_WITH_GAME: "animation-with-game",
+  ANIMATION_WITH_COOKIE: "animation-with-cookie",
+  ANIMATION_WITH_PIE: "animation-with-pie",
+  ANIMATION_WITH_CHICKEN: "animation-with-chicken",
+  ANIMATION_WITH_DUMBELL: "animation-with-dumbell",
+  ANIMATION_WITH_FOOTBALL: "animation-with-football",
+  ANIMATION_WITH_TENNIS: "animation-with-tennis",
 }

@@ -4,9 +4,11 @@ import dumbell_img from "../../../../public/action/dumbell.svg";
 import football_img from "../../../../public/action/football.svg";
 import tennis_img from "../../../../public/action/tennis.svg";
 import ActionBtn from "@/components/atoms/action-btn/action-btn";
-import { useActionStore, useModalStore } from "@/ctx/store";
+import { useActionStore, useModalStore, usePetStore } from "@/ctx/store";
+import { AnimationState } from "@/helper/type";
 
 const ActionTraining = ({ userId }) => {
+  const { setAnimationState } = usePetStore();
   const { setActionCooldown, isActionAvailable } = useActionStore();
   const closeModal = useModalStore((state) => state.closeModal);
 
@@ -15,6 +17,16 @@ const ActionTraining = ({ userId }) => {
       console.warn(`${actionName} is on cooldown.`);
       return;
     }
+
+    if (actionName === "dumbell")
+      setAnimationState(AnimationState.ANIMATION_WITH_DUMBELL);
+    else if (actionName === "football")
+      setAnimationState(AnimationState.ANIMATION_WITH_FOOTBALL);
+    else setAnimationState(AnimationState.ANIMATION_WITH_TENNIS);
+
+    setTimeout(() => {
+      setAnimationState(AnimationState.REGULAR);
+    }, 6000);
 
     try {
       const db = getFirestore();

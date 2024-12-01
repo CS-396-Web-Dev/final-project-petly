@@ -24,7 +24,6 @@
   position: absolute;
   width: calc(320px * var(--pixel-size));
   max-width: none;
-  animation: regularSpriteSheet 2s steps(10) infinite;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -42,19 +41,24 @@
   image-rendering: crisp-edges;
 }
 
-.sad {
-  top: calc(-32px * var(--pixel-size));
-  left: calc(4 * -32px * var(--pixel-size));
-  animation: sadSpritesheet 2s steps(6) infinite !important;
+.mametchi-regular {
+  top: calc(0 * -32px * var(--pixel-size));
+  animation: regular 2s steps(2) infinite;
 }
 
-@keyframes regularSpriteSheet {
+@keyframes regular {
   from {
     transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translate3d(calc(-100%), 0, 0);
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
   }
+}
+
+/* .sad {
+  top: calc(-32px * var(--pixel-size));
+  left: calc(4 * -32px * var(--pixel-size));
+  animation: sadSpritesheet 2s steps(6) infinite !important;
 }
 
 @keyframes sadSpritesheet {
@@ -63,5 +67,139 @@
   }
   to {
     transform: translate3d(calc(-32px * 6 * var(--pixel-size)), 0, 0);
+  }
+} */
+
+.mametchi-animation-with-gift {
+  top: calc(5 * -32px * var(--pixel-size));
+  left: calc(1 * -32px * var(--pixel-size));
+  animation: mametchiWithMusic 1s steps(2) infinite !important;
+}
+
+@keyframes mametchiWithGift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.mametchi-animation-with-music {
+  top: calc(3 * -32px * var(--pixel-size));
+  animation: mametchiWithMusic 1s steps(2) infinite !important;
+}
+
+@keyframes mametchiWithMusic {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.mametchi-animation-with-game {
+  top: calc(0 * -32px * var(--pixel-size));
+  left: calc(3 * -32px * var(--pixel-size));
+  animation: mametchiWithGame 1.5s steps(5) infinite !important;
+}
+
+@keyframes mametchiWithGame {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 5 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.mametchi-animation-with-cookie {
+  top: calc(3 * -32px * var(--pixel-size));
+  left: calc(5 * -32px * var(--pixel-size));
+  animation: mametchiWithCookie 1s steps(2) infinite !important;
+}
+
+@keyframes mametchiWithCookie {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.mametchi-animation-with-pie {
+  top: calc(4 * -32px * var(--pixel-size));
+  left: calc(5 * -32px * var(--pixel-size));
+  animation: mametchiWithPie 1s steps(2) infinite !important;
+}
+
+@keyframes mametchiWithPie {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.mametchi-animation-with-chicken {
+  top: calc(9 * -32px * var(--pixel-size));
+  left: calc(1 * -32px * var(--pixel-size));
+  animation: mametchiWithChicken 1s steps(3) infinite !important;
+}
+
+@keyframes mametchiWithChicken {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 3 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.mametchi-animation-with-dumbell {
+  top: calc(4 * -32px * var(--pixel-size));
+  left: calc(3 * -32px * var(--pixel-size));
+  animation: mametchiWithDumbell 1s steps(2) infinite !important;
+}
+
+@keyframes mametchiWithDumbell {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 2 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.mametchi-animation-with-football {
+  top: calc(7 * -32px * var(--pixel-size));
+  left: calc(3 * -32px * var(--pixel-size));
+  animation: mametchiWithFootball 2s steps(6) infinite !important;
+}
+
+@keyframes mametchiWithFootball {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 6 * var(--pixel-size)), 0, 0);
+  }
+}
+
+.mametchi-animation-with-tennis {
+  top: calc(3 * -32px * var(--pixel-size));
+  left: calc(5 * -32px * var(--pixel-size));
+  animation: mametchiWithTennis 2s steps(5) infinite !important;
+}
+
+@keyframes mametchiWithTennis {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-32px * 5 * var(--pixel-size)), 0, 0);
   }
 }

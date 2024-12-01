@@ -4,9 +4,11 @@ import cookie_img from "../../../../public/action/cookie.svg";
 import pie_img from "../../../../public/action/pie.svg";
 import chicken_img from "../../../../public/action/chicken.svg";
 import ActionBtn from "@/components/atoms/action-btn/action-btn";
-import { useActionStore, useModalStore } from "@/ctx/store";
+import { useActionStore, useModalStore, usePetStore } from "@/ctx/store";
+import { AnimationState } from "@/helper/type";
 
 const ActionHungriness = ({ userId }) => {
+  const { setAnimationState } = usePetStore();
   const { setActionCooldown, isActionAvailable } = useActionStore();
   const closeModal = useModalStore((state) => state.closeModal);
 
@@ -19,6 +21,16 @@ const ActionHungriness = ({ userId }) => {
       console.warn(`${actionName} is on cooldown.`);
       return;
     }
+
+    if (actionName === "cookie")
+      setAnimationState(AnimationState.ANIMATION_WITH_COOKIE);
+    else if (actionName === "pie")
+      setAnimationState(AnimationState.ANIMATION_WITH_PIE);
+    else setAnimationState(AnimationState.ANIMATION_WITH_CHICKEN);
+
+    setTimeout(() => {
+      setAnimationState(AnimationState.REGULAR);
+    }, 6000);
 
     try {
       const db = getFirestore();
