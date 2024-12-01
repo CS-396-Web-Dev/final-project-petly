@@ -40,14 +40,57 @@ export const useModalStore = create((set) => ({
     })),
 }));
 
+export const useActionStore = create(
+  logger(
+    persist(
+      (set, get) => ({
+        actions: {},
+
+        setActionCooldown: (actionName, cooldownDuration) => {
+          const timestamp = Date.now() + cooldownDuration * 1000;
+          set((state) => ({
+            actions: {
+              ...state.actions,
+              [actionName]: timestamp,
+            },
+          }));
+        },
+
+        isActionAvailable: (actionName) => {
+          const actions = get().actions;
+          const cooldownTimestamp = actions[actionName] || 0;
+          return Date.now() >= cooldownTimestamp;
+        },
+
+        clearExpiredCooldowns: () => {
+          const actions = get().actions;
+          const currentTimestamp = Date.now();
+          const validActions = Object.entries(actions).reduce(
+            (result, [name, ts]) => {
+              if (ts > currentTimestamp) result[name] = ts;
+              return result;
+            },
+            {}
+          );
+          set({ actions: validActions });
+        },
+      }),
+      {
+        name: "action-store",
+        storage: createJSONStorage(() => localStorage),
+      }
+    )
+  )
+);
+
 export const usePetStore = create(
   logger(
     persist(
       (set, get) => ({
         petName: "",
         petType: "",
-        petHappiness: 100,
-        petHungriness: 100,
+        petHappiness: 0,
+        petHungriness: 0,
         petTraining: 0,
         petStage: StageType.HATCH,
         petExp: 0,
@@ -59,17 +102,14 @@ export const usePetStore = create(
             petType,
             petStage: StageType.HATCH,
             petLevel: 1,
-            petHappiness: 100,
-            petHungriness: 100,
+            petHappiness: 0,
+            petHungriness: 0,
             petTraining: 0,
           })),
 
         evolve: () =>
           set(() => ({
             petStage: StageType.ADULT,
-            petHappiness: 100,
-            petHungriness: 100,
-            petTraining: 100,
           })),
 
         levelUp: () =>
@@ -101,19 +141,18 @@ export const usePetStore = create(
           set(() => ({
             ...data,
           })),
-          
-          resetPetDetails: () =>
-            set(() => ({
-              petName: "",
-              petType: "",
-              petHappiness: 100,
-              petHungriness: 100,
-              petTraining: 0,
-              petStage: "HATCH",
-              petExp: 0,
-              petLevel: 1,
-            })),
 
+        resetPetDetails: () =>
+          set(() => ({
+            petName: "",
+            petType: "",
+            petHappiness: 0,
+            petHungriness: 0,
+            petTraining: 0,
+            petStage: "HATCH",
+            petExp: 0,
+            petLevel: 1,
+          })),
 
         saveToFirebase: async (uid) => {
           const petData = get();

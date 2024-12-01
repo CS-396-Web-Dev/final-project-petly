@@ -4,9 +4,18 @@ import gift_img from "../../../../public/action/gift.svg";
 import music_img from "../../../../public/action/music.svg";
 import game_img from "../../../../public/action/game.svg";
 import ActionBtn from "@/components/atoms/action-btn/action-btn";
+import { useActionStore, useModalStore } from "@/ctx/store";
 
 const ActionHappiness = ({ userId }) => {
-  const handleHappinessUpdate = async (value) => {
+  const { setActionCooldown, isActionAvailable } = useActionStore();
+  const closeModal = useModalStore((state) => state.closeModal);
+
+  const handleHappinessUpdate = async (value, actionName, cooldownDuration) => {
+    if (!isActionAvailable(actionName)) {
+      console.warn(`${actionName} is on cooldown.`);
+      return;
+    }
+
     try {
       const db = getFirestore();
       const userDocRef = doc(db, "users", userId);
@@ -19,6 +28,7 @@ const ActionHappiness = ({ userId }) => {
 
         if (currentHappiness >= 100) {
           console.log("Happiness is already at maximum. No updates made.");
+          closeModal("petAction");
           return;
         }
 
@@ -38,6 +48,9 @@ const ActionHappiness = ({ userId }) => {
         console.log(
           `Updated petHappiness to ${updatedHappiness}, petExp to ${updatedExp}, petLevel to ${updatedLevel}`
         );
+
+        setActionCooldown(actionName, cooldownDuration);
+        closeModal("petAction");
       } else {
         console.warn("User document not found!");
       }
@@ -57,7 +70,8 @@ const ActionHappiness = ({ userId }) => {
         pt={0}
         bg={"bg-1"}
         tx={"tx-1"}
-        handleClick={handleHappinessUpdate}
+        handleClick={() => handleHappinessUpdate(12, "gift", 60)}
+        disabled={!isActionAvailable("gift")}
       />
       <ActionBtn
         img_src={music_img}
@@ -68,7 +82,8 @@ const ActionHappiness = ({ userId }) => {
         pt={3}
         bg={"bg-2"}
         tx={"tx-2"}
-        handleClick={handleHappinessUpdate}
+        handleClick={() => handleHappinessUpdate(18, "music", 90)}
+        disabled={!isActionAvailable("music")}
       />
       <ActionBtn
         img_src={game_img}
@@ -79,7 +94,8 @@ const ActionHappiness = ({ userId }) => {
         pt={5}
         bg={"bg-3"}
         tx={"tx-3"}
-        handleClick={handleHappinessUpdate}
+        handleClick={() => handleHappinessUpdate(24, "game", 120)}
+        disabled={!isActionAvailable("game")}
       />
     </>
   );

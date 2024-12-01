@@ -4,9 +4,22 @@ import cookie_img from "../../../../public/action/cookie.svg";
 import pie_img from "../../../../public/action/pie.svg";
 import chicken_img from "../../../../public/action/chicken.svg";
 import ActionBtn from "@/components/atoms/action-btn/action-btn";
+import { useActionStore, useModalStore } from "@/ctx/store";
 
 const ActionHungriness = ({ userId }) => {
-  const handleHungrinessUpdate = async (value) => {
+  const { setActionCooldown, isActionAvailable } = useActionStore();
+  const closeModal = useModalStore((state) => state.closeModal);
+
+  const handleHungrinessUpdate = async (
+    value,
+    actionName,
+    cooldownDuration
+  ) => {
+    if (!isActionAvailable(actionName)) {
+      console.warn(`${actionName} is on cooldown.`);
+      return;
+    }
+
     try {
       const db = getFirestore();
       const userDocRef = doc(db, "users", userId);
@@ -19,6 +32,7 @@ const ActionHungriness = ({ userId }) => {
 
         if (currentHungriness >= 100) {
           console.log("Hungriness is already at maximum. No updates made.");
+          closeModal("petAction");
           return;
         }
 
@@ -40,6 +54,9 @@ const ActionHungriness = ({ userId }) => {
         console.log(
           `Updated petHungriness to ${updatedHungriness}, petExp to ${updatedExp}, petLevel to ${updatedLevel}`
         );
+
+        setActionCooldown(actionName, cooldownDuration);
+        closeModal("petAction");
       } else {
         console.warn("User document not found!");
       }
@@ -59,7 +76,8 @@ const ActionHungriness = ({ userId }) => {
         pt={0}
         bg={"bg-1"}
         tx={"tx-1"}
-        handleClick={handleHungrinessUpdate}
+        handleClick={() => handleHungrinessUpdate(12, "cookie", 60)}
+        disabled={!isActionAvailable("cookie")}
       />
       <ActionBtn
         img_src={pie_img}
@@ -70,7 +88,8 @@ const ActionHungriness = ({ userId }) => {
         pt={0}
         bg={"bg-2"}
         tx={"tx-2"}
-        handleClick={handleHungrinessUpdate}
+        handleClick={() => handleHungrinessUpdate(18, "pie", 90)}
+        disabled={!isActionAvailable("pie")}
       />
       <ActionBtn
         img_src={chicken_img}
@@ -81,7 +100,8 @@ const ActionHungriness = ({ userId }) => {
         pt={0}
         bg={"bg-3"}
         tx={"tx-3"}
-        handleClick={handleHungrinessUpdate}
+        handleClick={() => handleHungrinessUpdate(24, "chicken", 120)}
+        disabled={!isActionAvailable("chickenF")}
       />
     </>
   );

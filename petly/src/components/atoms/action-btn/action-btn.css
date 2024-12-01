@@ -18,6 +18,13 @@
   transform: scale(0.9);
 }
 
+.action-btn[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+  filter: grayscale(1);
+  transform: none;
+}
+
 .action-img {
   object-fit: cover;
   user-select: none;

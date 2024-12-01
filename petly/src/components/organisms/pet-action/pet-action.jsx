@@ -7,7 +7,7 @@ import ActionHungriness from "@/components/molecules/action-hungriness/action-hu
 import ActionTraining from "@/components/molecules/action-training/action-training";
 import { useEffect } from "react";
 import { initAOS } from "@/helper/aosHelper";
-import { useModalStore } from "@/ctx/store";
+import { useModalStore, useActionStore } from "@/ctx/store";
 import { useAuth } from "@/ctx/AuthContext";
 import "./pet-action.css";
 
@@ -15,6 +15,13 @@ const PetAction = () => {
   const { user } = useAuth();
   const isPetActionOpen = useModalStore((state) => state.modals.petAction);
   const closeModal = useModalStore((state) => state.closeModal);
+  const clearExpiredCooldowns = useActionStore(
+    (state) => state.clearExpiredCooldowns
+  );
+
+  useEffect(() => {
+    clearExpiredCooldowns();
+  }, [clearExpiredCooldowns]);
 
   useEffect(() => {
     initAOS({
@@ -33,7 +40,7 @@ const PetAction = () => {
         <CloseBtn text={"Close"} onBtnClicked={() => closeModal("petAction")} />
 
         <section className="pet-info-section">
-          <PetInfo />
+          <PetInfo userId={user.uid} />
         </section>
 
         <span className="happiness-heading">
