@@ -44,13 +44,19 @@ const PetRankTopThree = () => {
           const data = doc.data();
           users.push({
             petExp: data.petExp || 0,
+            petLevel: data.petLevel || 1,
             petName: data.petName || "N/A",
             petType: data.petType || "DOGGCHI",
           });
         });
 
         const sortedUsers = users
-          .sort((a, b) => b.petExp - a.petExp)
+          .sort((a, b) => {
+            if (b.petLevel !== a.petLevel) {
+              return b.petLevel - a.petLevel; // Sort by petLevel first
+            }
+            return b.petExp - a.petExp; // Sort by petExp if petLevel is the same
+          })
           .slice(0, 3);
 
         setTopThree(sortedUsers);
