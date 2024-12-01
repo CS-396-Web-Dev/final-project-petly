@@ -27,8 +27,9 @@ const ActionHungriness = ({ userId }) => {
 
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        const currentHungriness = userData.petHungriness || 0;
-        const currentExp = userData.petExp || 0;
+        let currentHungriness = userData.petHungriness || 0;
+        let currentExp = userData.petExp || 0;
+        let currentLevel = userData.petLevel || 1;
 
         if (currentHungriness >= 100) {
           console.log("Hungriness is already at maximum. No updates made.");
@@ -37,22 +38,32 @@ const ActionHungriness = ({ userId }) => {
         }
 
         const updatedHungriness = Math.min(currentHungriness + value, 100);
-        let updatedExp = currentExp + value;
 
-        if (currentHungriness + value > 100) {
-          updatedExp -= value - (100 - currentHungriness);
+        const baseExp = 100;
+        const growthFactor = 1.5;
+
+        const calculateNextExp = (level) => {
+          if (level === 1) return baseExp;
+          return Math.floor(baseExp * Math.pow(growthFactor, level - 1));
+        };
+
+        let nextExp = calculateNextExp(currentLevel);
+        currentExp += value;
+
+        while (currentExp >= nextExp) {
+          currentExp -= nextExp;
+          currentLevel += 1;
+          nextExp = calculateNextExp(currentLevel);
         }
-
-        const updatedLevel = Math.floor(updatedExp / 1000) + 1;
 
         await updateDoc(userDocRef, {
           petHungriness: updatedHungriness,
-          petExp: updatedExp,
-          petLevel: updatedLevel,
+          petExp: currentExp,
+          petLevel: currentLevel,
         });
 
         console.log(
-          `Updated petHungriness to ${updatedHungriness}, petExp to ${updatedExp}, petLevel to ${updatedLevel}`
+          `Updated petHungriness to ${updatedHungriness}, petExp to ${currentExp}, petLevel to ${currentLevel}`
         );
 
         setActionCooldown(actionName, cooldownDuration);

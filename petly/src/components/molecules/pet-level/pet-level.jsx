@@ -8,7 +8,7 @@ import "./pet-level.css";
 const PetLevel = ({ userId }) => {
   const [petLevel, setPetLevel] = useState("Loading...");
   const [petExp, setPetExp] = useState(0);
-  const [nextExp, setNextExp] = useState(1000);
+  const [nextExp, setNextExp] = useState(0);
   const [progressBarWidth, setProgressBarWidth] = useState(0);
 
   useEffect(() => {
@@ -26,11 +26,18 @@ const PetLevel = ({ userId }) => {
           setPetLevel(level);
           setPetExp(exp);
 
-          const calculateNextExp = () => {
-            return (Math.floor(exp / 1000) + 1) * 1000;
+          const calculateNextExp = (level) => {
+            const baseExp = 100;
+            const growthFactor = 1.5;
+
+            if (level === 1) {
+              return baseExp;
+            }
+
+            return Math.floor(baseExp * Math.pow(growthFactor, level - 1));
           };
 
-          const calculatedNextExp = calculateNextExp();
+          const calculatedNextExp = calculateNextExp(level);
           setNextExp(calculatedNextExp);
 
           const progress = Math.min((exp / calculatedNextExp) * 100, 100);
@@ -95,7 +102,7 @@ const PetLevel = ({ userId }) => {
             className="pet-level-progress-bar"
             style={{
               width: `${progressBarWidth}%`,
-              backgroundColor: "#24b874", // This is different from happiness and hungriness, so I set the background color of the progressBar to be green.
+              backgroundColor: "#24b874",
             }}
           ></div>
         </div>

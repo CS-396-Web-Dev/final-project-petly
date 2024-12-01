@@ -115,6 +115,7 @@ export const usePetStore = create(
         levelUp: () =>
           set((state) => ({
             petLevel: state.petLevel + 1,
+            petExp: 0,
           })),
 
         updateAttribute: async (uid, attribute, value) => {

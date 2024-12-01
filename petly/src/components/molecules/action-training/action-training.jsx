@@ -23,8 +23,9 @@ const ActionTraining = ({ userId }) => {
 
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        const currentTraining = userData.petTraining || 0;
-        const currentExp = userData.petExp || 0;
+        let currentTraining = userData.petTraining || 0;
+        let currentExp = userData.petExp || 0;
+        let currentLevel = userData.petLevel || 1;
 
         if (currentTraining >= 100) {
           console.log("Training is already at maximum. No updates made.");
@@ -33,21 +34,32 @@ const ActionTraining = ({ userId }) => {
         }
 
         const updatedTraining = Math.min(currentTraining + value, 100);
-        let updatedExp = currentExp + value;
 
-        if (currentTraining + value > 100)
-          updatedExp -= value - (100 - currentTraining);
+        const baseExp = 100;
+        const growthFactor = 1.5;
 
-        const updatedLevel = Math.floor(updatedExp / 1000) + 1;
+        const calculateNextExp = (level) => {
+          if (level === 1) return baseExp;
+          return Math.floor(baseExp * Math.pow(growthFactor, level - 1));
+        };
+
+        let nextExp = calculateNextExp(currentLevel);
+        currentExp += value;
+
+        while (currentExp >= nextExp) {
+          currentExp -= nextExp;
+          currentLevel += 1;
+          nextExp = calculateNextExp(currentLevel);
+        }
 
         await updateDoc(userDocRef, {
           petTraining: updatedTraining,
-          petExp: updatedExp,
-          petLevel: updatedLevel,
+          petExp: currentExp,
+          petLevel: currentLevel,
         });
 
         console.log(
-          `Updated petTraining to ${updatedTraining}, petExp to ${updatedExp}, petLevel to ${updatedLevel}`
+          `Updated petTraining to ${updatedTraining}, petExp to ${currentExp}, petLevel to ${currentLevel}`
         );
 
         setActionCooldown(actionName, cooldownDuration);
