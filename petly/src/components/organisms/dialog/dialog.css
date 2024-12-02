@@ -31,7 +31,7 @@
   padding: 1rem;
 }
 
-.dialog-inner p {
+.dialog-text {
   position: relative;
   width: fit-content;
   color: #000;
@@ -44,27 +44,21 @@
   white-space: normal;
   user-select: none;
   padding-right: 3px;
+}
 
-  &::before {
-    position: absolute;
-    content: "";
-    width: 4px;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    animation: blink 0.8s infinite;
-  }
+.dialog-text::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
 }
 
 @keyframes blink {
   0%,
-  50% {
-    border-right: 2px solid transparent;
+  100% {
+    opacity: 1;
   }
 
-  50%,
-  100% {
-    border-right: 2px solid #000;
+  50% {
+    opacity: 0;
   }
 }
 

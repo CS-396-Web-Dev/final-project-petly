@@ -12,10 +12,8 @@ export const StageType = {
 
 export const AnimationState = {
   REGULAR: "regular",
-  SAD: "sad",
-  HAPPY: "happy",
-  ANGRY: "angry",
-  SLEEPING: "sleeping",
+  // SAD: "sad",
+  // HAPPY: "happy",
   ANIMATION_WITH_GIFT: "animation-with-gift",
   ANIMATION_WITH_MUSIC: "animation-with-music",
   ANIMATION_WITH_GAME: "animation-with-game",
