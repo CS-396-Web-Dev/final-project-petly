@@ -1,0 +1,53 @@
+.pet-name-heading {
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  white-space: normal;
+  text-align: left;
+  padding-left: 1.5rem;
+}
+
+.pet-name-input-wrapper {
+  width: 342px;
+  height: 52px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f2f4f8;
+  border-radius: 8px;
+  margin: 1rem auto;
+}
+
+.pet-name-input {
+  border: none;
+  outline: none;
+  background-color: #0000;
+  box-shadow: unset;
+  width: 342px;
+  max-width: 342px;
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  white-space: normal;
+  text-overflow: ellipsis;
+  text-align: left;
+  padding-bottom: 0.1rem;
+  padding-left: 1rem;
+}
+
+.pet-name-input::placeholder {
+  width: fit-content;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  white-space: normal;
+}

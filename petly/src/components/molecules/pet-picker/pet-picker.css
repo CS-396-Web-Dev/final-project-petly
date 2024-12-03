@@ -1,0 +1,63 @@
+.pet-picker-heading {
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  white-space: normal;
+  text-align: left;
+  padding-left: 1.5rem;
+}
+
+.pet-picker-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+.pet-picker-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 80px;
+  height: 90px;
+  padding: 0.3rem;
+  border: 3px solid #0000;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.pet-picker-button:hover {
+  transform: scale(1.05);
+  border-color: rgba(0, 144, 246, 1);
+  box-shadow: 0 3px 6px rgba(76, 175, 80, 0.2);
+}
+
+.pet-picker-button.selected {
+  border: 3px solid rgba(0, 144, 246, 1);
+  box-shadow: 0 3px 6px rgba(76, 175, 80, 0.2);
+}
+
+.pet-picker-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.pet-picker-name {
+  color: #070707;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  user-select: none;
+}
